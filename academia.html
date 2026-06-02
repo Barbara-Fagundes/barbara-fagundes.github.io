@@ -62,6 +62,8 @@
     .collaborator-card { padding: 0.85rem; border: 1px solid var(--line); border-radius: 8px; background: #fbfbfb; line-height: 1.4; }
     .collaborator-name { display: block; font-weight: 700; }
     .collaborator-role { display: block; margin-top: 0.18rem; color: var(--muted); font-size: 0.86rem; }
+    .detail-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.6rem 0 0.9rem; }
+    .detail-tag { padding: 0.2rem 0.6rem; background: #eaf5ff; border: 1px solid #86bff4; border-radius: 999px; font-size: 0.82rem; color: #1f62b2; }
     @media (max-width: 600px) {
       header { grid-template-columns: 120px 1fr; gap: 1rem; align-items: start; }
       .profile-picture { width: 100px; height: 100px; }
@@ -130,7 +132,7 @@
     </div>
 
     <div class="network-wrap">
-      <svg class="collab-network" viewBox="0 0 760 360" role="img" aria-label="Network diagram connecting Barbara Fagundes to research and teaching projects">
+      <svg class="collab-network" viewBox="0 0 760 470" role="img" aria-label="Network diagram connecting Barbara Fagundes to research and teaching projects">
         <line class="network-line" x1="380" y1="172" x2="380" y2="37" />
         <line class="network-line" x1="380" y1="172" x2="120" y2="100" />
         <line class="network-line" x1="380" y1="172" x2="640" y2="100" />
@@ -139,6 +141,9 @@
         <line class="network-line" x1="380" y1="172" x2="380" y2="319" />
         <line class="network-line" x1="380" y1="172" x2="165" y2="319" />
         <line class="network-line" x1="380" y1="172" x2="585" y2="319" />
+        <line class="network-line" x1="380" y1="172" x2="90" y2="415" />
+        <line class="network-line" x1="380" y1="172" x2="380" y2="415" />
+        <line class="network-line" x1="380" y1="172" x2="645" y2="418" />
 
         <g class="center-node" aria-hidden="true">
           <rect x="310" y="148" width="140" height="48" rx="8" />
@@ -187,6 +192,22 @@
           <rect x="490" y="290" width="190" height="58" rx="8" />
           <text class="node-title" x="585" y="310" text-anchor="middle">Graduate Course TA</text>
           <text class="node-category" x="585" y="324" text-anchor="middle">Teaching &amp; curriculum</text>
+        </g>
+        <g class="project-node" data-project="engrteams" role="button" tabindex="0" aria-label="EngrTEAMS">
+          <rect x="10" y="390" width="160" height="50" rx="8" />
+          <text class="node-title" x="90" y="410" text-anchor="middle">EngrTEAMS</text>
+          <text class="node-category" x="90" y="424" text-anchor="middle">Computing &amp; STEM education</text>
+        </g>
+        <g class="project-node" data-project="picturestem" role="button" tabindex="0" aria-label="PictureSTEM">
+          <rect x="300" y="390" width="160" height="50" rx="8" />
+          <text class="node-title" x="380" y="410" text-anchor="middle">PictureSTEM</text>
+          <text class="node-category" x="380" y="424" text-anchor="middle">Computing &amp; STEM education</text>
+        </g>
+        <g class="project-node" data-project="integrated-stem" role="button" tabindex="0" aria-label="Integrated STEM and Computing Learning">
+          <rect x="535" y="390" width="215" height="58" rx="8" />
+          <text class="node-title" x="642" y="408" text-anchor="middle">Integrated STEM and</text>
+          <text class="node-title" x="642" y="421" text-anchor="middle">Computing Learning</text>
+          <text class="node-category" x="642" y="435" text-anchor="middle">Computing &amp; STEM education</text>
         </g>
       </svg>
     </div>
@@ -329,6 +350,27 @@
           ["Audeen Fentiman, Ph.D.", "Crowley Family Professor in Engineering Education, Purdue University"]
         ]
       },
+      engrteams: {
+        title: "EngrTEAMS",
+        type: "Computing & STEM education",
+        tags: ["STEM Integration", "Student Learning"],
+        description: "",
+        collaborators: []
+      },
+      picturestem: {
+        title: "PictureSTEM",
+        type: "Computing & STEM education",
+        tags: ["STEM Integration", "Student Learning"],
+        description: "",
+        collaborators: []
+      },
+      "integrated-stem": {
+        title: "Integrated STEM and Computing Learning",
+        type: "Computing & STEM education",
+        tags: ["Broaden Participation", "STEM Integration", "Classroom Assessment", "Learning in Informal Environments", "Student Learning", "Student Engagement"],
+        description: "",
+        collaborators: []
+      },
       "graduate-ta": {
         title: "Graduate Course TA",
         type: "Teaching & curriculum · 2024",
@@ -380,7 +422,19 @@
         grid.append(card);
       });
 
-      detailCard.append(title, type, description, grid);
+      if (project.tags && project.tags.length) {
+        const tagsDiv = document.createElement("div");
+        tagsDiv.className = "detail-tags";
+        project.tags.forEach(tag => {
+          const chip = document.createElement("span");
+          chip.className = "detail-tag";
+          chip.textContent = tag;
+          tagsDiv.append(chip);
+        });
+        detailCard.append(title, type, tagsDiv, description, grid);
+      } else {
+        detailCard.append(title, type, description, grid);
+      }
     }
 
     projectNodes.forEach((node) => {
