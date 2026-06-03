@@ -457,14 +457,14 @@
         display: none;
       }
     }
-    .theme-toggle { position: fixed; top: 1rem; right: 1rem; z-index: 100; padding: 0.32rem 0.75rem; border: 1px solid var(--soft-line); border-radius: 999px; background: var(--tag-bg); color: var(--muted); font-size: 0.82rem; cursor: pointer; font-family: inherit; line-height: 1; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-    .theme-toggle:hover { color: var(--accent); border-color: var(--line); }
+    .theme-toggle { position: fixed; top: 1rem; right: 1rem; z-index: 100; width: 2.4rem; height: 2.4rem; border: 1px solid var(--soft-line); border-radius: 50%; background: var(--tag-bg); font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 6px rgba(0,0,0,0.12); padding: 0; }
+    .theme-toggle:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.18); }
     html[data-theme="dark"] { --bg: #111111; --name: #e8e8e5; --text: #c8c8c4; --muted: #7a7a75; --accent: #c8a060; --line: #4a3a28; --soft-line: #2a2a2a; --tag-bg: #1a1a18; --cream: rgba(20,20,18,0.85); }
     html[data-theme="dark"] .theme-toggle { background: var(--tag-bg); border-color: var(--soft-line); }
   </style>
 </head>
 <body>
-  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">Dark</button>
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">☀️</button>
   <div class="splash">
     <nav class="top-nav fade-up" style="--delay: 80ms" aria-label="Main navigation">
       <a href="index.html" aria-current="page">Home</a>
@@ -563,7 +563,7 @@
       function applyTheme(dark) {
         if (dark) { document.documentElement.setAttribute('data-theme', 'dark'); }
         else { document.documentElement.removeAttribute('data-theme'); }
-        toggle.textContent = dark ? 'Light' : 'Dark';
+        toggle.textContent = dark ? '🌙' : '☀️';
       }
       var saved = localStorage.getItem('theme');
       var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
