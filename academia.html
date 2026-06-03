@@ -354,8 +354,15 @@
         title: "EngrTEAMS",
         type: "INSPIRE Research Institute for Pre-College Engineering, Purdue University",
         tags: ["STEM Integration", "Student Learning"],
+        funding: "National Science Foundation Grant No. DUE-1238140",
         description: "EngrTEAMS is a major research project led by Purdue University (via the INSPIRE Research Institute) focused on integrating engineering design into grades 4–8 mathematics and science curricula. The initiative equips teachers with hands-on lesson plans to boost critical thinking and STEM interest. For this project, I managed large-scale classroom video data collection across Indiana schools.",
-        collaborators: []
+        collaborators: [
+          ["Tamara J. Moore, Ph.D.", "Lead Principal Investigator"],
+          ["Paul Imbertson", "Co-Principal Investigator"],
+          ["Marshall Davis", "Co-Principal Investigator"],
+          ["Selcen Guzey", "Co-Principal Investigator"],
+          ["Gillian Roehrig", "Co-Principal Investigator"]
+        ]
       },
       picturestem: {
         title: "PictureSTEM",
@@ -444,6 +451,15 @@
           tagsDiv.append(chip);
         });
         elements.push(tagsDiv);
+      }
+
+      if (project.funding) {
+        const fundingP = document.createElement("p");
+        fundingP.style.cssText = "font-size:0.86rem; color: var(--muted); margin-bottom: 0.75rem;";
+        const boldF = document.createElement("strong");
+        boldF.textContent = "Project Funding: ";
+        fundingP.append(boldF, document.createTextNode(project.funding));
+        elements.push(fundingP);
       }
 
       elements.push(description);
