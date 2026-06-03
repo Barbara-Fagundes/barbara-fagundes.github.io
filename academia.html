@@ -4,6 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Academia | Bárbara Fagundes</title>
+  <script>
+    (function() {
+      var saved = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (saved === 'dark' || (!saved && prefersDark)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
   <style>
     :root { --bg: #fafafa; --text: #171717; --muted: #666; --line: #e6e6e6; --link: #235789; --max: 760px; --heading-font: Georgia, "Times New Roman", Times, serif; }
     * { box-sizing: border-box; }
@@ -37,11 +46,11 @@
     .collab-subtitle { margin: 0.2rem 0 1.1rem; color: var(--muted); font-size: 0.95rem; }
     .collab-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem 1.2rem; margin-bottom: 1.5rem; color: #333; font-size: 0.82rem; }
     .legend-item { display: inline-flex; align-items: center; gap: 0.4rem; white-space: nowrap; }
-    .legend-swatch { width: 0.6rem; height: 0.6rem; border: 1px solid currentColor; border-radius: 2px; opacity: 0.85; }
-    .legend-blue { color: #86bff4; background: #eaf5ff; }
-    .legend-amber { color: #e2b157; background: #fff4d8; }
-    .legend-purple { color: #b7a5ed; background: #f3efff; }
-    .legend-green { color: #85cfb1; background: #e9f8f0; }
+    .legend-swatch { width: 0.75rem; height: 0.75rem; border-radius: 2px; flex-shrink: 0; }
+    .legend-blue { background: #86bff4; }
+    .legend-amber { background: #e2b157; }
+    .legend-purple { background: #b7a5ed; }
+    .legend-green { background: #85cfb1; }
     .network-wrap { display: flex; justify-content: center; overflow-x: auto; padding-bottom: 0.25rem; }
     .collab-network { width: min(100%, 760px); height: auto; overflow: visible; font-family: inherit; }
     .network-line { stroke: #dcdcdc; stroke-width: 1; }
@@ -51,7 +60,15 @@
     .project-node { cursor: pointer; outline: none; }
     .project-node rect { fill: #fff; stroke: #dcdcdc; stroke-width: 1; transition: fill 160ms ease, stroke 160ms ease; }
     .project-node:hover rect, .project-node:focus rect { stroke: #9f9f9f; }
-    .project-node.is-active rect { fill: #eef6ff; stroke: #3d82e6; stroke-width: 1.6; }
+    .project-node.is-active rect { stroke-width: 1.6; }
+    .project-node[data-category="computing"] rect { fill: #eaf5ff; stroke: #86bff4; }
+    .project-node[data-category="ai"] rect { fill: #fff4d8; stroke: #e2b157; }
+    .project-node[data-category="learning"] rect { fill: #f3efff; stroke: #b7a5ed; }
+    .project-node[data-category="teaching"] rect { fill: #e9f8f0; stroke: #85cfb1; }
+    .project-node[data-category="computing"].is-active rect { fill: #86bff4; stroke: #3d82e6; }
+    .project-node[data-category="ai"].is-active rect { fill: #e2b157; stroke: #c08800; }
+    .project-node[data-category="learning"].is-active rect { fill: #b7a5ed; stroke: #7b5fd4; }
+    .project-node[data-category="teaching"].is-active rect { fill: #85cfb1; stroke: #2a9b66; }
     .project-node .node-title { fill: var(--text); font-size: 11px; font-weight: 700; }
     .project-node .node-category { fill: var(--muted); font-size: 9px; }
     .collab-detail { margin: 1.35rem auto 0; padding: 1.4rem; border: 1px solid #d7d7d7; border-radius: 8px; background: #fff; text-align: left; }
@@ -73,6 +90,42 @@
       .collab-grid { grid-template-columns: 1fr; }
       .collab-detail { padding: 1rem; }
     }
+    /* ── Theme toggle button ─────────────────────── */
+    .theme-toggle {
+      padding: 0.28rem 0.65rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.85rem;
+      cursor: pointer;
+      font-family: inherit;
+      line-height: 1.65;
+    }
+    .theme-toggle:hover { color: var(--text); border-color: var(--muted); }
+    /* ── Dark mode ───────────────────────────────── */
+    html[data-theme="dark"] {
+      --bg: #111111;
+      --text: #e4e4e4;
+      --muted: #9a9a9a;
+      --line: #2d2d2d;
+      --link: #79b5f5;
+    }
+    html[data-theme="dark"] .profile-links a { background: #1e1e1e; border-color: #3a3a3a; }
+    html[data-theme="dark"] .profile-links .cv-button { background: var(--link); border-color: var(--link); }
+    html[data-theme="dark"] .network-line { stroke: #2d2d2d; }
+    html[data-theme="dark"] .center-node rect { fill: #0f1f36; stroke: #3d82e6; }
+    html[data-theme="dark"] .center-node text { fill: #79b5f5; }
+    html[data-theme="dark"] .project-node rect { fill: #1c1c1c; stroke: #3a3a3a; }
+    html[data-theme="dark"] .project-node:hover rect,
+    html[data-theme="dark"] .project-node:focus rect { stroke: #666; }
+    html[data-theme="dark"] .project-node[data-category="computing"] rect { fill: #0d1d30; stroke: #86bff4; }
+    html[data-theme="dark"] .project-node[data-category="ai"] rect { fill: #291c07; stroke: #e2b157; }
+    html[data-theme="dark"] .project-node[data-category="learning"] rect { fill: #191226; stroke: #b7a5ed; }
+    html[data-theme="dark"] .project-node[data-category="teaching"] rect { fill: #091c12; stroke: #85cfb1; }
+    html[data-theme="dark"] .collab-detail { background: #1a1a1a; border-color: #2d2d2d; }
+    html[data-theme="dark"] .collaborator-card { background: #1e1e1e; border-color: #2d2d2d; }
+    html[data-theme="dark"] .detail-tag { background: #0d1d30; border-color: #3d82e6; color: #79b5f5; }
   </style>
 </head>
 <body>
@@ -99,6 +152,7 @@
           <a href="instructional-design.html">Portfolio</a>
           <a href="beyond-cv.html">Beyond the CV</a>
           <a href="contact.html">Contact</a>
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">Dark</button>
         </nav>
       </div>
     </header>
@@ -151,59 +205,59 @@
           <text x="380" y="182" text-anchor="middle">Purdue University</text>
         </g>
 
-        <g class="project-node" data-project="rect" role="button" tabindex="0" aria-label="NSF RECT Project">
+        <g class="project-node" data-project="rect" data-category="computing" role="button" tabindex="0" aria-label="NSF RECT Project">
           <rect x="300" y="12" width="160" height="50" rx="8" />
           <text class="node-title" x="380" y="31" text-anchor="middle">NSF RECT Project</text>
           <text class="node-category" x="380" y="45" text-anchor="middle">Computing &amp; STEM education</text>
         </g>
-        <g class="project-node" data-project="cistar" role="button" tabindex="0" aria-label="CISTAR NSF Center">
+        <g class="project-node" data-project="cistar" data-category="teaching" role="button" tabindex="0" aria-label="CISTAR NSF Center">
           <rect x="30" y="75" width="180" height="50" rx="8" />
           <text class="node-title" x="120" y="95" text-anchor="middle">CISTAR NSF Center</text>
           <text class="node-category" x="120" y="109" text-anchor="middle">Teaching &amp; curriculum</text>
         </g>
-        <g class="project-node" data-project="ai-lab" role="button" tabindex="0" aria-label="AI-Lab Study">
+        <g class="project-node" data-project="ai-lab" data-category="ai" role="button" tabindex="0" aria-label="AI-Lab Study">
           <rect x="550" y="75" width="180" height="50" rx="8" />
           <text class="node-title" x="640" y="95" text-anchor="middle">AI-Lab Study</text>
           <text class="node-category" x="640" y="109" text-anchor="middle">AI in education</text>
         </g>
-        <g class="project-node" data-project="autonomy" role="button" tabindex="0" aria-label="Autonomy and SDT">
+        <g class="project-node" data-project="autonomy" data-category="learning" role="button" tabindex="0" aria-label="Autonomy and SDT">
           <rect x="30" y="200" width="190" height="58" rx="8" />
           <text class="node-title" x="125" y="220" text-anchor="middle">Autonomy &amp; SDT</text>
           <text class="node-category" x="125" y="234" text-anchor="middle">Learning &amp; faculty</text>
           <text class="node-category" x="125" y="246" text-anchor="middle">development</text>
         </g>
-        <g class="project-node" data-project="spa" role="button" tabindex="0" aria-label="Student Pedagogy Advocates">
+        <g class="project-node" data-project="spa" data-category="learning" role="button" tabindex="0" aria-label="Student Pedagogy Advocates">
           <rect x="535" y="200" width="195" height="58" rx="8" />
           <text class="node-title" x="632" y="217" text-anchor="middle">Student Pedagogy</text>
           <text class="node-title" x="632" y="230" text-anchor="middle">Advocates</text>
           <text class="node-category" x="632" y="244" text-anchor="middle">Learning &amp; faculty development</text>
         </g>
-        <g class="project-node" data-project="fye" role="button" tabindex="0" aria-label="First-Year Engineering">
+        <g class="project-node" data-project="fye" data-category="teaching" role="button" tabindex="0" aria-label="First-Year Engineering">
           <rect x="285" y="290" width="190" height="58" rx="8" />
           <text class="node-title" x="380" y="310" text-anchor="middle">First-Year Engineering</text>
           <text class="node-category" x="380" y="324" text-anchor="middle">Teaching &amp; curriculum</text>
         </g>
-        <g class="project-node" data-project="online" role="button" tabindex="0" aria-label="Teaching Engineering Online">
+        <g class="project-node" data-project="online" data-category="teaching" role="button" tabindex="0" aria-label="Teaching Engineering Online">
           <rect x="70" y="290" width="190" height="58" rx="8" />
           <text class="node-title" x="165" y="310" text-anchor="middle">Teaching Eng. Online</text>
           <text class="node-category" x="165" y="324" text-anchor="middle">Teaching &amp; curriculum</text>
         </g>
-        <g class="project-node" data-project="graduate-ta" role="button" tabindex="0" aria-label="Graduate Course TA">
+        <g class="project-node" data-project="graduate-ta" data-category="teaching" role="button" tabindex="0" aria-label="Graduate Course TA">
           <rect x="490" y="290" width="190" height="58" rx="8" />
           <text class="node-title" x="585" y="310" text-anchor="middle">Graduate Course TA</text>
           <text class="node-category" x="585" y="324" text-anchor="middle">Teaching &amp; curriculum</text>
         </g>
-        <g class="project-node" data-project="engrteams" role="button" tabindex="0" aria-label="EngrTEAMS">
+        <g class="project-node" data-project="engrteams" data-category="computing" role="button" tabindex="0" aria-label="EngrTEAMS">
           <rect x="10" y="390" width="160" height="50" rx="8" />
           <text class="node-title" x="90" y="410" text-anchor="middle">EngrTEAMS</text>
           <text class="node-category" x="90" y="424" text-anchor="middle">Computing &amp; STEM education</text>
         </g>
-        <g class="project-node" data-project="picturestem" role="button" tabindex="0" aria-label="PictureSTEM">
+        <g class="project-node" data-project="picturestem" data-category="computing" role="button" tabindex="0" aria-label="PictureSTEM">
           <rect x="300" y="390" width="160" height="50" rx="8" />
           <text class="node-title" x="380" y="410" text-anchor="middle">PictureSTEM</text>
           <text class="node-category" x="380" y="424" text-anchor="middle">Computing &amp; STEM education</text>
         </g>
-        <g class="project-node" data-project="integrated-stem" role="button" tabindex="0" aria-label="Integrated STEM and Computing Learning">
+        <g class="project-node" data-project="integrated-stem" data-category="computing" role="button" tabindex="0" aria-label="Integrated STEM and Computing Learning">
           <rect x="535" y="390" width="215" height="58" rx="8" />
           <text class="node-title" x="642" y="408" text-anchor="middle">Integrated STEM and</text>
           <text class="node-title" x="642" y="421" text-anchor="middle">Computing Learning</text>
@@ -272,6 +326,26 @@
   </section>
   </main>
   <script>
+    (function() {
+      var toggle = document.getElementById('theme-toggle');
+      function applyTheme(dark) {
+        if (dark) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.removeAttribute('data-theme');
+        }
+        toggle.textContent = dark ? 'Light' : 'Dark';
+      }
+      var saved = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(saved === 'dark' || (!saved && prefersDark));
+      toggle.addEventListener('click', function() {
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        applyTheme(!isDark);
+      });
+    })();
+
     const collaborationProjects = {
       rect: {
         title: "NSF RECT Project",
@@ -368,6 +442,7 @@
         title: "PictureSTEM",
         type: "INSPIRE Research Institute for Pre-College Engineering, Purdue University",
         tags: ["STEM Integration", "Student Learning"],
+        funding: "National Science Foundation (Grant No. EEC - 1442416 & IIP - 1519387)",
         description: "PictureSTEM is an educational curriculum and research project originally developed by Purdue University's INSPIRE Research Institute for Pre-College Engineering. It seamlessly integrates science, technology, engineering, mathematics (STEM), and computational thinking with literacy by using picture books as a foundation for hands-on engineering design challenges. For this project, I managed large-scale classroom video data collection across Indiana schools, co-designed lessons, and conducted video analysis.",
         collaborators: [
           ["Monica E. Cardella, Ph.D.", "Principal Investigator"],
@@ -457,7 +532,7 @@
         const fundingP = document.createElement("p");
         fundingP.style.cssText = "font-size:0.86rem; color: var(--muted); margin-bottom: 0.75rem;";
         const boldF = document.createElement("strong");
-        boldF.textContent = "Project Funding: ";
+        boldF.textContent = "Funding Source of Project: ";
         fundingP.append(boldF, document.createTextNode(project.funding));
         elements.push(fundingP);
       }
