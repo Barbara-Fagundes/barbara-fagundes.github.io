@@ -373,7 +373,8 @@
         title: "Integrated STEM and Computing Learning",
         type: "INSPIRE Research Institute for Pre-College Engineering, Purdue University",
         tags: ["Broaden Participation", "STEM Integration", "Classroom Assessment", "Learning in Informal Environments", "Student Learning", "Student Engagement"],
-        description: "The Integrated STEM and Computing Learning in K-2 project at Purdue University (via the INSPIRE Research Institute) expanded the PictureSTEM curriculum to introduce computational thinking and engineering design to Kindergarten through 2nd-grade students across both formal classrooms and informal science centers. For this project, I contributed to the informal learning component of the project by facilitating engineering activities for children at an Indiana museum and conducting data collection and analysis in that setting. Partners include: New Community School, Glen Acres Elementary School, Imagination Station, WBAA Public Radio, and the Covenant Homeschool Corporation.",
+        description: "The Integrated STEM and Computing Learning in K-2 project at Purdue University (via the INSPIRE Research Institute) expanded the PictureSTEM curriculum to introduce computational thinking and engineering design to Kindergarten through 2nd-grade students across both formal classrooms and informal science centers. For this project, I contributed to the informal learning component of the project by facilitating engineering activities for children at an Indiana museum and conducting data collection and analysis in that setting.",
+        partners: "New Community School, Glen Acres Elementary School, Imagination Station, WBAA Public Radio, and the Covenant Homeschool Corporation.",
         collaborators: []
       },
       "graduate-ta": {
@@ -427,6 +428,8 @@
         grid.append(card);
       });
 
+      const elements = [title, type];
+
       if (project.tags && project.tags.length) {
         const tagsDiv = document.createElement("div");
         tagsDiv.className = "detail-tags";
@@ -436,10 +439,21 @@
           chip.textContent = tag;
           tagsDiv.append(chip);
         });
-        detailCard.append(title, type, tagsDiv, description, grid);
-      } else {
-        detailCard.append(title, type, description, grid);
+        elements.push(tagsDiv);
       }
+
+      elements.push(description);
+
+      if (project.partners) {
+        const partnersP = document.createElement("p");
+        const bold = document.createElement("strong");
+        bold.textContent = "Partners include: ";
+        partnersP.append(bold, document.createTextNode(project.partners));
+        elements.push(partnersP);
+      }
+
+      elements.push(grid);
+      detailCard.append(...elements);
     }
 
     projectNodes.forEach((node) => {
