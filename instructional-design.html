@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio | Bárbara Fagundes</title>
+  <script>(function(){var s=localStorage.getItem('theme'),p=window.matchMedia('(prefers-color-scheme: dark)').matches;if(s==='dark'||(!s&&p))document.documentElement.setAttribute('data-theme','dark')})();</script>
   <style>
     :root { --bg: #fafafa; --text: #171717; --muted: #666; --line: #e6e6e6; --link: #235789; --max: 760px; --heading-font: Georgia, "Times New Roman", Times, serif; }
     * { box-sizing: border-box; }
@@ -35,9 +36,17 @@
       .profile-block { justify-items: start; }
       .profile-links { max-width: 120px; justify-content: start; }
     }
+    .theme-toggle { position: fixed; top: 1rem; right: 1rem; z-index: 100; padding: 0.32rem 0.75rem; border: 1px solid var(--line); border-radius: 999px; background: var(--bg); color: var(--muted); font-size: 0.82rem; cursor: pointer; font-family: inherit; line-height: 1; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    .theme-toggle:hover { color: var(--text); border-color: var(--muted); }
+    html[data-theme="dark"] { --bg: #111111; --text: #e4e4e4; --muted: #9a9a9a; --line: #2d2d2d; --link: #79b5f5; }
+    html[data-theme="dark"] .profile-links a { background: #1e1e1e; border-color: #3a3a3a; }
+    html[data-theme="dark"] .profile-links .cv-button { background: var(--link); border-color: var(--link); }
+    html[data-theme="dark"] .profile-picture { background: #2a2a2a; }
+    html[data-theme="dark"] nav[aria-label="Main navigation"] a[aria-current="page"] { background: #1a2a3a; border-color: #2d4a6a; }
   </style>
 </head>
 <body>
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">Dark</button>
   <main>
     <header>
       <div class="profile-block">
@@ -69,5 +78,23 @@
     <p style="color: var(--muted); font-style: italic;">Portfolio content is coming soon. Check back later!</p>
   </section>
   </main>
+  <script>
+    (function() {
+      var toggle = document.getElementById('theme-toggle');
+      function applyTheme(dark) {
+        if (dark) { document.documentElement.setAttribute('data-theme', 'dark'); }
+        else { document.documentElement.removeAttribute('data-theme'); }
+        toggle.textContent = dark ? 'Light' : 'Dark';
+      }
+      var saved = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(saved === 'dark' || (!saved && prefersDark));
+      toggle.addEventListener('click', function() {
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        applyTheme(!isDark);
+      });
+    })();
+  </script>
 </body>
 </html>

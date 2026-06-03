@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bárbara Fagundes, PhD</title>
   <meta name="description" content="Bárbara Fagundes, learning scientist, educator, and learning experience designer." />
+  <script>(function(){var s=localStorage.getItem('theme'),p=window.matchMedia('(prefers-color-scheme: dark)').matches;if(s==='dark'||(!s&&p))document.documentElement.setAttribute('data-theme','dark')})();</script>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap");
 
@@ -456,9 +457,14 @@
         display: none;
       }
     }
+    .theme-toggle { position: fixed; top: 1rem; right: 1rem; z-index: 100; padding: 0.32rem 0.75rem; border: 1px solid var(--soft-line); border-radius: 999px; background: var(--tag-bg); color: var(--muted); font-size: 0.82rem; cursor: pointer; font-family: inherit; line-height: 1; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    .theme-toggle:hover { color: var(--accent); border-color: var(--line); }
+    html[data-theme="dark"] { --bg: #111111; --name: #e8e8e5; --text: #c8c8c4; --muted: #7a7a75; --accent: #c8a060; --line: #4a3a28; --soft-line: #2a2a2a; --tag-bg: #1a1a18; --cream: rgba(20,20,18,0.85); }
+    html[data-theme="dark"] .theme-toggle { background: var(--tag-bg); border-color: var(--soft-line); }
   </style>
 </head>
 <body>
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">Dark</button>
   <div class="splash">
     <nav class="top-nav fade-up" style="--delay: 80ms" aria-label="Main navigation">
       <a href="index.html" aria-current="page">Home</a>
@@ -552,6 +558,22 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+    (function() {
+      var toggle = document.getElementById('theme-toggle');
+      function applyTheme(dark) {
+        if (dark) { document.documentElement.setAttribute('data-theme', 'dark'); }
+        else { document.documentElement.removeAttribute('data-theme'); }
+        toggle.textContent = dark ? 'Light' : 'Dark';
+      }
+      var saved = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(saved === 'dark' || (!saved && prefersDark));
+      toggle.addEventListener('click', function() {
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        applyTheme(!isDark);
+      });
+    })();
   </script>
 </body>
 </html>

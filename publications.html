@@ -4,18 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Publications | Barbara Fagundes</title>
+  <script>(function(){var s=localStorage.getItem('theme'),p=window.matchMedia('(prefers-color-scheme: dark)').matches;if(s==='dark'||(!s&&p))document.documentElement.setAttribute('data-theme','dark')})();</script>
   <style>
-    body { max-width: 760px; margin: 0 auto; padding: 4rem 1.25rem; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.65; background: #fafafa; color: #171717; }
-    a { color: #235789; text-decoration: none; } a:hover { text-decoration: underline; }
+    :root { --bg: #fafafa; --text: #171717; --muted: #666; --line: #e6e6e6; --link: #235789; }
+    body { max-width: 760px; margin: 0 auto; padding: 4rem 1.25rem; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.65; background: var(--bg); color: var(--text); }
+    a { color: var(--link); text-decoration: none; } a:hover { text-decoration: underline; }
     nav { display: flex; flex-wrap: wrap; gap: .85rem; margin: 1rem 0 3rem; }
     h1 { font-size: clamp(2rem, 6vw, 3.5rem); line-height: 1; letter-spacing: -.05em; }
     h1, h2, h3, h4, h5, h6 { font-family: Georgia, "Times New Roman", Times, serif; }
-    section { border-top: 1px solid #e6e6e6; padding: 2rem 0; }
+    section { border-top: 1px solid var(--line); padding: 2rem 0; }
     li { margin-bottom: .9rem; }
-    .meta { color: #666; }
+    .meta { color: var(--muted); }
+    .theme-toggle { position: fixed; top: 1rem; right: 1rem; z-index: 100; padding: 0.32rem 0.75rem; border: 1px solid var(--line); border-radius: 999px; background: var(--bg); color: var(--muted); font-size: 0.82rem; cursor: pointer; font-family: inherit; line-height: 1; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    .theme-toggle:hover { color: var(--text); border-color: var(--muted); }
+    html[data-theme="dark"] { --bg: #111111; --text: #e4e4e4; --muted: #9a9a9a; --line: #2d2d2d; --link: #79b5f5; }
   </style>
 </head>
 <body>
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">Dark</button>
   <h1>Publications</h1>
   <nav>
     <a href="index.html">Home</a>
@@ -57,5 +63,23 @@
       <li>Fagundes, B., Harris-Thomas, B., Bonem, E., Guberman, D., &amp; Levesque-Bristol, C. (2026). Supporting student autonomy in higher education STEM classrooms: Faculty practices, barriers, and evolving perceptions. <span class="meta">Manuscript in preparation. Target journal: <em>International Journal of STEM Education</em>.</span></li>
     </ul>
   </section>
+  <script>
+    (function() {
+      var toggle = document.getElementById('theme-toggle');
+      function applyTheme(dark) {
+        if (dark) { document.documentElement.setAttribute('data-theme', 'dark'); }
+        else { document.documentElement.removeAttribute('data-theme'); }
+        toggle.textContent = dark ? 'Light' : 'Dark';
+      }
+      var saved = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(saved === 'dark' || (!saved && prefersDark));
+      toggle.addEventListener('click', function() {
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        applyTheme(!isDark);
+      });
+    })();
+  </script>
 </body>
 </html>
