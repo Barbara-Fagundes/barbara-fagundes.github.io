@@ -61,10 +61,14 @@
     .project-node rect { fill: #fff; stroke: #dcdcdc; stroke-width: 1; transition: fill 160ms ease, stroke 160ms ease; }
     .project-node:hover rect, .project-node:focus rect { stroke: #9f9f9f; }
     .project-node.is-active rect { stroke-width: 1.6; }
-    .project-node[data-category="computing"] rect { fill: #eaf5ff; stroke: #86bff4; }
-    .project-node[data-category="ai"] rect { fill: #fff4d8; stroke: #e2b157; }
-    .project-node[data-category="learning"] rect { fill: #f3efff; stroke: #b7a5ed; }
-    .project-node[data-category="teaching"] rect { fill: #e9f8f0; stroke: #85cfb1; }
+    .project-node[data-category="computing"]:hover rect,
+    .project-node[data-category="computing"]:focus rect { fill: #eaf5ff; stroke: #86bff4; }
+    .project-node[data-category="ai"]:hover rect,
+    .project-node[data-category="ai"]:focus rect { fill: #fff4d8; stroke: #e2b157; }
+    .project-node[data-category="learning"]:hover rect,
+    .project-node[data-category="learning"]:focus rect { fill: #f3efff; stroke: #b7a5ed; }
+    .project-node[data-category="teaching"]:hover rect,
+    .project-node[data-category="teaching"]:focus rect { fill: #e9f8f0; stroke: #85cfb1; }
     .project-node[data-category="computing"].is-active rect { fill: #86bff4; stroke: #3d82e6; }
     .project-node[data-category="ai"].is-active rect { fill: #e2b157; stroke: #c08800; }
     .project-node[data-category="learning"].is-active rect { fill: #b7a5ed; stroke: #7b5fd4; }
@@ -119,10 +123,14 @@
     html[data-theme="dark"] .project-node rect { fill: #1c1c1c; stroke: #3a3a3a; }
     html[data-theme="dark"] .project-node:hover rect,
     html[data-theme="dark"] .project-node:focus rect { stroke: #666; }
-    html[data-theme="dark"] .project-node[data-category="computing"] rect { fill: #0d1d30; stroke: #86bff4; }
-    html[data-theme="dark"] .project-node[data-category="ai"] rect { fill: #291c07; stroke: #e2b157; }
-    html[data-theme="dark"] .project-node[data-category="learning"] rect { fill: #191226; stroke: #b7a5ed; }
-    html[data-theme="dark"] .project-node[data-category="teaching"] rect { fill: #091c12; stroke: #85cfb1; }
+    html[data-theme="dark"] .project-node[data-category="computing"]:hover rect,
+    html[data-theme="dark"] .project-node[data-category="computing"]:focus rect { fill: #0d1d30; stroke: #86bff4; }
+    html[data-theme="dark"] .project-node[data-category="ai"]:hover rect,
+    html[data-theme="dark"] .project-node[data-category="ai"]:focus rect { fill: #291c07; stroke: #e2b157; }
+    html[data-theme="dark"] .project-node[data-category="learning"]:hover rect,
+    html[data-theme="dark"] .project-node[data-category="learning"]:focus rect { fill: #191226; stroke: #b7a5ed; }
+    html[data-theme="dark"] .project-node[data-category="teaching"]:hover rect,
+    html[data-theme="dark"] .project-node[data-category="teaching"]:focus rect { fill: #091c12; stroke: #85cfb1; }
     html[data-theme="dark"] .collab-detail { background: #1a1a1a; border-color: #2d2d2d; }
     html[data-theme="dark"] .collaborator-card { background: #1e1e1e; border-color: #2d2d2d; }
     html[data-theme="dark"] .detail-tag { background: #0d1d30; border-color: #3d82e6; color: #79b5f5; }
