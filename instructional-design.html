@@ -35,7 +35,28 @@
       .profile-picture { width: 100px; height: 100px; }
       .profile-block { justify-items: start; }
       .profile-links { max-width: 120px; justify-content: start; }
+      .cards-grid { grid-template-columns: 1fr; }
     }
+    /* Portfolio cards */
+    .portfolio-intro { margin: 0 0 1.75rem; font-size: 1rem; }
+    .cards-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .project-card { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; transition: box-shadow 160ms ease, transform 160ms ease; background: var(--bg); }
+    .project-card:hover { box-shadow: 0 6px 22px rgba(0,0,0,0.1); transform: translateY(-2px); }
+    .card-thumb { height: 120px; display: flex; align-items: center; justify-content: center; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.9); text-align: center; padding: 0 1rem; }
+    .card-thumb-1 { background: linear-gradient(135deg, #3d82e6 0%, #235789 100%); }
+    .card-thumb-2 { background: linear-gradient(135deg, #7b5fd4 0%, #3a2890 100%); }
+    .card-thumb-3 { background: linear-gradient(135deg, #2a9b66 0%, #1a6644 100%); }
+    .card-thumb-4 { background: linear-gradient(135deg, #c4607a 0%, #8a2a42 100%); }
+    .card-body { padding: 1.1rem 1.15rem 1.25rem; flex: 1; display: flex; flex-direction: column; }
+    .card-cat { color: var(--muted); font-size: 0.8rem; margin: 0 0 0.25rem; font-style: italic; }
+    .card-title { margin: 0 0 0.5rem; font-family: var(--heading-font); font-size: 1rem; letter-spacing: -0.01em; }
+    .card-desc { margin: 0 0 0.8rem; font-size: 0.87rem; color: var(--muted); line-height: 1.5; flex: 1; }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.9rem; }
+    .card-tag { padding: 0.14rem 0.5rem; border: 1px solid var(--line); border-radius: 999px; font-size: 0.72rem; color: var(--muted); }
+    .card-btn { align-self: flex-start; padding: 0.35rem 0.85rem; background: var(--link); color: white; border-radius: 999px; font-size: 0.82rem; text-decoration: none; }
+    .card-btn:hover { opacity: 0.85; text-decoration: none; color: white; }
+    html[data-theme="dark"] .project-card { background: #1a1a1a; }
+    html[data-theme="dark"] .card-tag { border-color: #3a3a3a; }
     .theme-toggle { position: fixed; top: 1rem; right: 1rem; z-index: 100; width: 2.4rem; height: 2.4rem; border: 1px solid var(--line); border-radius: 50%; background: var(--bg); font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 6px rgba(0,0,0,0.12); padding: 0; }
     .theme-toggle:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.18); }
     html[data-theme="dark"] { --bg: #111111; --text: #e4e4e4; --muted: #9a9a9a; --line: #2d2d2d; --link: #79b5f5; }
@@ -76,7 +97,74 @@
     </header>
 
   <section>
-    <p style="color: var(--muted); font-style: italic;">Portfolio content is coming soon. Check back later!</p>
+    <p class="portfolio-intro">Selected projects that demonstrate my work in instructional design, online learning, AI in education, computing education, and learning experience design.</p>
+    <div class="cards-grid">
+
+      <div class="project-card">
+        <div class="card-thumb card-thumb-1">Analyze · Design · Develop · Deliver</div>
+        <div class="card-body">
+          <p class="card-cat">Instructional Design &amp; E-Learning Development</p>
+          <h3 class="card-title">Teaching Engineering Online</h3>
+          <p class="card-desc">Designed online course materials, learning objectives, module structure, scripts, assessments, and engagement strategies for a graduate-level engineering education course.</p>
+          <div class="card-tags">
+            <span class="card-tag">Instructional Design</span>
+            <span class="card-tag">E-Learning</span>
+            <span class="card-tag">Assessment Alignment</span>
+            <span class="card-tag">Accessibility</span>
+          </div>
+          <a class="card-btn" href="portfolio-teaching-online.html">View case study</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="card-thumb card-thumb-2">Before · AI-Lab Intervention · After</div>
+        <div class="card-body">
+          <p class="card-cat">AI Education Research &amp; Learning Intervention</p>
+          <h3 class="card-title">AI-Lab: Generative AI in Computing Courses</h3>
+          <p class="card-desc">Studied how undergraduate students use GenAI tools before and after an instructional intervention in computer science and engineering courses.</p>
+          <div class="card-tags">
+            <span class="card-tag">AI in Education</span>
+            <span class="card-tag">Computing Education</span>
+            <span class="card-tag">Qualitative Research</span>
+            <span class="card-tag">Student Learning</span>
+          </div>
+          <a class="card-btn" href="portfolio-ai-lab.html">View case study</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="card-thumb card-thumb-3">Robotics · Sequencing · Debugging</div>
+        <div class="card-body">
+          <p class="card-cat">Learning Sciences &amp; Computing Education Research</p>
+          <h3 class="card-title">Computational Thinking in K-2 Classrooms</h3>
+          <p class="card-desc">Investigated how first-grade students develop computational thinking through robotics, programming tasks, debugging, sequencing, and loops.</p>
+          <div class="card-tags">
+            <span class="card-tag">Computational Thinking</span>
+            <span class="card-tag">K-12 STEM</span>
+            <span class="card-tag">Robotics</span>
+            <span class="card-tag">Learning Sciences</span>
+          </div>
+          <a class="card-btn" href="portfolio-ct-k2.html">View case study</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="card-thumb card-thumb-4">Student · Faculty · Partnership</div>
+        <div class="card-body">
+          <p class="card-cat">Faculty Development &amp; Student Partnership</p>
+          <h3 class="card-title">Student Pedagogy Advocates</h3>
+          <p class="card-desc">Supported student-faculty partnership initiatives focused on teaching, learning, mentoring, and evidence-based instructional improvement.</p>
+          <div class="card-tags">
+            <span class="card-tag">Faculty Development</span>
+            <span class="card-tag">Student Partnership</span>
+            <span class="card-tag">Higher Education</span>
+            <span class="card-tag">SoTL</span>
+          </div>
+          <a class="card-btn" href="portfolio-spa.html">View case study</a>
+        </div>
+      </div>
+
+    </div>
   </section>
   </main>
   <script>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teaching Engineering Online | Portfolio | Bárbara Fagundes</title>
+  <script>(function(){var s=localStorage.getItem('theme'),p=window.matchMedia('(prefers-color-scheme: dark)').matches;if(s==='dark'||(!s&&p))document.documentElement.setAttribute('data-theme','dark')})();</script>
+  <style>
+    :root { --bg: #fafafa; --text: #171717; --muted: #666; --line: #e6e6e6; --link: #235789; --max: 760px; --heading-font: Georgia, "Times New Roman", Times, serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--text); background: var(--bg); line-height: 1.65; }
+    main { max-width: var(--max); margin: 0 auto; padding: 4rem 1.25rem; }
+    header { margin-bottom: 3rem; display: grid; grid-template-columns: 140px 1fr; gap: 1.5rem; align-items: center; }
+    .profile-block { display: grid; gap: 0.8rem; justify-items: center; }
+    .profile-picture { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line); background: #eee; }
+    .profile-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.45rem; width: 100%; margin-top: 0; }
+    .profile-links a { display: inline-flex; align-items: center; justify-content: center; width: 2.15rem; height: 2.15rem; border: 1px solid var(--line); border-radius: 50%; color: var(--muted); background: white; font-size: 0.78rem; font-weight: 700; line-height: 1; }
+    .profile-links a:hover { color: white; background: var(--link); border-color: var(--link); text-decoration: none; }
+    .profile-links .cv-button { width: 2.7rem; border-radius: 999px; background: var(--link); border-color: var(--link); color: white; }
+    h1 { margin: 0 0 0.4rem; font-family: var(--heading-font); font-size: clamp(1.3rem, 3.8vw, 2.2rem); line-height: 1; letter-spacing: -0.04em; white-space: nowrap; }
+    .subtitle { margin: 0; color: var(--muted); font-size: 1.05rem; }
+    nav { display: flex; flex-wrap: wrap; gap: 0.85rem; margin-top: 1.4rem; font-size: 0.95rem; }
+    nav[aria-label="Main navigation"] a { padding: 0.28rem 0.62rem; border: 1px solid transparent; border-radius: 999px; }
+    nav[aria-label="Main navigation"] a[aria-current="page"] { color: var(--link); background: #eef5fb; border-color: #cfe0ee; text-decoration: none; }
+    .headline-block { position: relative; }
+    a { color: var(--link); text-decoration: none; } a:hover { text-decoration: underline; }
+    section { padding: 2rem 0; border-top: 1px solid var(--line); }
+    h2 { margin: 0 0 0.75rem; font-family: var(--heading-font); font-size: 1.15rem; letter-spacing: -0.02em; }
+    h3 { margin: 1.2rem 0 0.5rem; font-family: var(--heading-font); font-size: 1rem; }
+    p { margin: 0 0 0.9rem; }
+    ul { margin: 0 0 1rem; padding-left: 1.2rem; }
+    li { margin-bottom: 0.5rem; }
+    /* Case study elements */
+    .back-link { display: inline-flex; align-items: center; gap: 0.3rem; color: var(--muted); font-size: 0.85rem; border: 1px solid var(--line); border-radius: 999px; padding: 0.22rem 0.7rem; margin-bottom: 1.5rem; }
+    .back-link:hover { color: var(--link); text-decoration: none; border-color: var(--link); }
+    .case-bar { height: 5px; border-radius: 3px; margin-bottom: 1.5rem; background: linear-gradient(90deg, #3d82e6 0%, #235789 100%); }
+    .case-category { color: var(--muted); font-size: 0.82rem; margin: 0 0 0.3rem; text-transform: uppercase; letter-spacing: 0.07em; font-weight: 600; }
+    .case-title { margin: 0 0 0.5rem; font-family: var(--heading-font); font-size: clamp(1.35rem, 4vw, 1.9rem); letter-spacing: -0.02em; }
+    .case-subtitle { color: var(--muted); margin: 0; font-size: 0.95rem; }
+    .process-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; margin: 0.75rem 0 1rem; }
+    .process-step { padding: 0.3rem 0.7rem; background: #eaf5ff; color: #235789; border-radius: 4px; font-size: 0.78rem; font-weight: 700; }
+    .process-arrow { color: var(--muted); font-size: 0.8rem; }
+    .course-map { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 0.75rem 0; }
+    .course-map th { background: #eaf5ff; color: #235789; padding: 0.5rem 0.8rem; text-align: left; font-weight: 700; font-size: 0.8rem; border-bottom: 2px solid #86bff4; }
+    .course-map td { padding: 0.55rem 0.8rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+    .course-map tr:last-child td { border-bottom: none; }
+    .week-num { font-weight: 700; white-space: nowrap; }
+    .artifact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.85rem; margin: 0.75rem 0; }
+    .artifact-card { border: 1px solid var(--line); border-radius: 8px; padding: 0.9rem 1rem; }
+    .artifact-label { font-weight: 700; font-size: 0.88rem; margin: 0 0 0.2rem; }
+    .artifact-desc { color: var(--muted); font-size: 0.82rem; margin: 0; }
+    .skills-wrap { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.6rem; }
+    .skill-chip { padding: 0.22rem 0.65rem; background: #eaf5ff; border: 1px solid #86bff4; border-radius: 999px; font-size: 0.8rem; color: #1f62b2; }
+    @media (max-width: 600px) {
+      header { grid-template-columns: 120px 1fr; gap: 1rem; align-items: start; }
+      .profile-picture { width: 100px; height: 100px; }
+      .profile-block { justify-items: start; }
+      .profile-links { max-width: 120px; justify-content: start; }
+      .artifact-grid { grid-template-columns: 1fr; }
+    }
+    .theme-toggle { position: fixed; top: 1rem; right: 1rem; z-index: 100; width: 2.4rem; height: 2.4rem; border: 1px solid var(--line); border-radius: 50%; background: var(--bg); font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 6px rgba(0,0,0,0.12); padding: 0; }
+    .theme-toggle:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.18); }
+    html[data-theme="dark"] { --bg: #111111; --text: #e4e4e4; --muted: #9a9a9a; --line: #2d2d2d; --link: #79b5f5; }
+    html[data-theme="dark"] .profile-links a { background: #1e1e1e; border-color: #3a3a3a; }
+    html[data-theme="dark"] .profile-links .cv-button { background: var(--link); border-color: var(--link); }
+    html[data-theme="dark"] .profile-links a img { filter: brightness(0) invert(1); }
+    html[data-theme="dark"] .profile-picture { background: #2a2a2a; }
+    html[data-theme="dark"] nav[aria-label="Main navigation"] a[aria-current="page"] { background: #1a2a3a; border-color: #2d4a6a; }
+    html[data-theme="dark"] .process-step { background: #0d1d30; color: #79b5f5; }
+    html[data-theme="dark"] .course-map th { background: #0d1d30; color: #79b5f5; border-color: #3d82e6; }
+    html[data-theme="dark"] .skill-chip { background: #0d1d30; border-color: #3d82e6; color: #79b5f5; }
+    html[data-theme="dark"] .artifact-card { background: #1a1a1a; }
+  </style>
+</head>
+<body>
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">☀️</button>
+  <main>
+    <header>
+      <div class="profile-block">
+        <img class="profile-picture" src="assets/headshot.png" alt="Portrait of Bárbara Fagundes" />
+        <nav aria-label="Profile links" class="profile-links">
+          <a class="cv-button" href="files/bfagundes_CV.pdf" aria-label="CV" title="CV">CV</a>
+          <a href="mailto:iambarbaraf@gmail.com" aria-label="Email" title="Email"><img src="assets/icons8-email-50.png" alt="Email" style="width: 1em; height: 1em; vertical-align: middle;" /></a>
+          <a href="https://scholar.google.com/citations?user=XupPbTIAAAAJ&hl=en&oi=ao" aria-label="Google Scholar" title="Google Scholar"><img src="assets/Google_Scholar_logo.svg" alt="Google Scholar" style="width: 1em; height: 1em; vertical-align: middle;" /></a>
+          <a href="https://www.researchgate.net/profile/Barbara-Fagundes-2" aria-label="ResearchGate" title="ResearchGate"><img src="assets/researchgate-logo.svg" alt="ResearchGate" style="width: 1em; height: 1em; vertical-align: middle;" /></a>
+          <a href="https://www.linkedin.com/in/iambarbaraf" aria-label="LinkedIn" title="LinkedIn"><img src="assets/icons8-linkedin-50.png" alt="LinkedIn" style="width: 1em; height: 1em; vertical-align: middle;" /></a>
+        </nav>
+      </div>
+      <div class="headline-block">
+        <h1>Barbara Fagundes, PhD</h1>
+        <p class="subtitle">Learning Scientist | AI in Education | Computing Education<br>K-12 STEM | Responsible AI Integration</p>
+        <nav aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="academia.html">Academia</a>
+          <a href="industry.html">Industry</a>
+          <a href="instructional-design.html" aria-current="page">Portfolio</a>
+          <a href="beyond-cv.html">Beyond the CV</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <div style="padding-top: 0.5rem;">
+      <a class="back-link" href="instructional-design.html">← Back to Portfolio</a>
+      <div class="case-bar"></div>
+      <p class="case-category">Instructional Design &amp; E-Learning Development · Case Study</p>
+      <h2 class="case-title">Teaching Engineering Online</h2>
+      <p class="case-subtitle">Graduate course co-development at Purdue University · Brightspace · 2024</p>
+    </div>
+
+    <section>
+      <h2>1. Overview</h2>
+      <p>In 2024, I co-developed a graduate-level course on online engineering pedagogy at Purdue University in collaboration with Professor Audeen Fentiman (Crowley Family Professor in Engineering Education). The course was designed to equip engineering instructors and graduate students with the theory, tools, and practical skills to design and deliver effective online and blended learning experiences.</p>
+      <p>My contributions spanned the full instructional design process: from defining learning objectives and mapping the course structure to writing instructional scripts, developing multimedia-ready content, designing assessments, and ensuring accessibility throughout all course materials.</p>
+    </section>
+
+    <section>
+      <h2>2. Challenge</h2>
+      <p>The challenge was to translate a broad and evolving body of knowledge about online teaching into a structured, practical, and accessible learning experience — one that would be relevant both to graduate students with limited teaching experience and to practicing instructors seeking to improve their online courses.</p>
+      <p>The course needed to balance theory and application, move learners through meaningful practice, and model the same design principles it was teaching.</p>
+    </section>
+
+    <section>
+      <h2>3. Audience</h2>
+      <p>Graduate students and engineering faculty enrolled in a graduate-level engineering education course at Purdue University. Learners ranged from doctoral students with limited teaching experience to current instructors navigating online and hybrid course delivery for the first time.</p>
+    </section>
+
+    <section>
+      <h2>4. My Role</h2>
+      <p>I contributed to the instructional design and development of the course materials, working closely with Professor Fentiman in an iterative, collaborative process. My specific contributions included:</p>
+      <ul>
+        <li>Writing measurable learning objectives for each module</li>
+        <li>Designing the 5-week module structure and content sequencing</li>
+        <li>Developing instructional scripts for video-based content</li>
+        <li>Creating slide decks, module outlines, and learner-facing materials</li>
+        <li>Designing formative and summative assessments aligned to objectives</li>
+        <li>Applying accessibility standards across multimedia and written content</li>
+        <li>Iterating on materials based on instructor feedback and course needs</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>5. Design Process</h2>
+      <div class="process-flow">
+        <span class="process-step">Analyze</span>
+        <span class="process-arrow">→</span>
+        <span class="process-step">Design</span>
+        <span class="process-arrow">→</span>
+        <span class="process-step">Map</span>
+        <span class="process-arrow">→</span>
+        <span class="process-step">Prototype</span>
+        <span class="process-arrow">→</span>
+        <span class="process-step">Develop</span>
+        <span class="process-arrow">→</span>
+        <span class="process-step">Iterate</span>
+        <span class="process-arrow">→</span>
+        <span class="process-step">Deliver</span>
+      </div>
+      <p>The process began with a needs analysis — identifying the audience's prior knowledge, course context, and learning environment constraints. From there, I mapped the course structure using backward design, starting with desired outcomes and working backward to content and assessments. Prototypes of individual modules were reviewed and revised collaboratively before full development.</p>
+    </section>
+
+    <section>
+      <h2>6. Course Map</h2>
+      <p>The course was structured across five thematic weeks, each building on the previous and culminating in a practical deliverable.</p>
+      <table class="course-map">
+        <thead>
+          <tr>
+            <th>Week</th>
+            <th>Topic</th>
+            <th>Key Activities &amp; Deliverables</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="week-num">1</td>
+            <td>Foundations of Online Learning<br><span style="color:var(--muted);font-size:0.82rem;">Learning theories · Modalities · Student experience</span></td>
+            <td>Course audit reflection · Discussion board · Reading response</td>
+          </tr>
+          <tr>
+            <td class="week-num">2</td>
+            <td>Course Design &amp; Alignment<br><span style="color:var(--muted);font-size:0.82rem;">Backward design · Learning objectives · Assessment alignment</span></td>
+            <td>Draft course map · Peer review of objectives · ABCD objective writing practice</td>
+          </tr>
+          <tr>
+            <td class="week-num">3</td>
+            <td>Multimedia Learning &amp; Content Development<br><span style="color:var(--muted);font-size:0.82rem;">Cognitive load · Multimedia principles · Accessibility</span></td>
+            <td>Module storyboard · Video script draft · Accessibility review checklist</td>
+          </tr>
+          <tr>
+            <td class="week-num">4</td>
+            <td>Student Engagement Online<br><span style="color:var(--muted);font-size:0.82rem;">Community of Inquiry · Discussion facilitation · Collaborative tools</span></td>
+            <td>Engagement strategy design · Discussion board analysis · Tool comparison</td>
+          </tr>
+          <tr>
+            <td class="week-num">5</td>
+            <td>Evaluation &amp; Iteration<br><span style="color:var(--muted);font-size:0.82rem;">Formative/summative evaluation · Quality Matters rubric</span></td>
+            <td>Course evaluation plan · Peer critique · Reflection and revision log</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>7. Sample Artifacts</h2>
+      <div class="artifact-grid">
+        <div class="artifact-card">
+          <p class="artifact-label">Course Map</p>
+          <p class="artifact-desc">Visual overview of the 5-week structure showing topics, objectives, and assessment types across the course arc.</p>
+        </div>
+        <div class="artifact-card">
+          <p class="artifact-label">Module Outline</p>
+          <p class="artifact-desc">Detailed breakdown of Week 3 (Multimedia Learning), including sequenced activities, time estimates, and learner-facing instructions.</p>
+        </div>
+        <div class="artifact-card">
+          <p class="artifact-label">Learning Objectives</p>
+          <p class="artifact-desc">Sample set of objectives written in ABCD format for Weeks 2 and 3, demonstrating alignment to assessments and content.</p>
+        </div>
+        <div class="artifact-card">
+          <p class="artifact-label">Script Excerpt</p>
+          <p class="artifact-desc">Narration script for a 6-minute instructional video on cognitive load and multimedia design principles.</p>
+        </div>
+        <div class="artifact-card">
+          <p class="artifact-label">Assessment Design</p>
+          <p class="artifact-desc">Sample formative and summative assessment items aligned to Week 2 objectives, including rubric criteria and feedback prompts.</p>
+        </div>
+        <div class="artifact-card">
+          <p class="artifact-label">Accessibility Checklist</p>
+          <p class="artifact-desc">Custom checklist for reviewing slide decks and video content against WCAG accessibility standards, developed for this course.</p>
+        </div>
+      </div>
+      <p style="color:var(--muted);font-size:0.85rem;font-style:italic;">Artifacts available upon request.</p>
+    </section>
+
+    <section>
+      <h2>8. Skills Demonstrated</h2>
+      <div class="skills-wrap">
+        <span class="skill-chip">Learning Objectives</span>
+        <span class="skill-chip">Content Sequencing</span>
+        <span class="skill-chip">Backward Design</span>
+        <span class="skill-chip">Assessment Alignment</span>
+        <span class="skill-chip">Online Learning</span>
+        <span class="skill-chip">E-Learning Development</span>
+        <span class="skill-chip">Accessibility (WCAG)</span>
+        <span class="skill-chip">Multimedia Learning</span>
+        <span class="skill-chip">Instructional Writing</span>
+        <span class="skill-chip">Script Writing</span>
+        <span class="skill-chip">Brightspace LMS</span>
+        <span class="skill-chip">Faculty Collaboration</span>
+      </div>
+    </section>
+
+  </main>
+  <script>
+    (function() {
+      var toggle = document.getElementById('theme-toggle');
+      function applyTheme(dark) {
+        if (dark) { document.documentElement.setAttribute('data-theme', 'dark'); }
+        else { document.documentElement.removeAttribute('data-theme'); }
+        toggle.textContent = dark ? '🌙' : '☀️';
+      }
+      var saved = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(saved === 'dark' || (!saved && prefersDark));
+      toggle.addEventListener('click', function() {
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        applyTheme(!isDark);
+      });
+    })();
+  </script>
+</body>
+</html>

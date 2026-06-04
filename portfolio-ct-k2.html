@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Computational Thinking K-2 | Portfolio | Bárbara Fagundes</title>
+  <script>(function(){var s=localStorage.getItem('theme'),p=window.matchMedia('(prefers-color-scheme: dark)').matches;if(s==='dark'||(!s&&p))document.documentElement.setAttribute('data-theme','dark')})();</script>
+  <style>
+    :root { --bg: #fafafa; --text: #171717; --muted: #666; --line: #e6e6e6; --link: #235789; --max: 760px; --heading-font: Georgia, "Times New Roman", Times, serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--text); background: var(--bg); line-height: 1.65; }
+    main { max-width: var(--max); margin: 0 auto; padding: 4rem 1.25rem; }
+    header { margin-bottom: 3rem; display: grid; grid-template-columns: 140px 1fr; gap: 1.5rem; align-items: center; }
+    .profile-block { display: grid; gap: 0.8rem; justify-items: center; }
+    .profile-picture { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line); background: #eee; }
+    .profile-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.45rem; width: 100%; margin-top: 0; }
+    .profile-links a { display: inline-flex; align-items: center; justify-content: center; width: 2.15rem; height: 2.15rem; border: 1px solid var(--line); border-radius: 50%; color: var(--muted); background: white; font-size: 0.78rem; font-weight: 700; line-height: 1; }
+    .profile-links a:hover { color: white; background: var(--link); border-color: var(--link); text-decoration: none; }
+    .profile-links .cv-button { width: 2.7rem; border-radius: 999px; background: var(--link); border-color: var(--link); color: white; }
+    h1 { margin: 0 0 0.4rem; font-family: var(--heading-font); font-size: clamp(1.3rem, 3.8vw, 2.2rem); line-height: 1; letter-spacing: -0.04em; white-space: nowrap; }
+    .subtitle { margin: 0; color: var(--muted); font-size: 1.05rem; }
+    nav { display: flex; flex-wrap: wrap; gap: 0.85rem; margin-top: 1.4rem; font-size: 0.95rem; }
+    nav[aria-label="Main navigation"] a { padding: 0.28rem 0.62rem; border: 1px solid transparent; border-radius: 999px; }
+    nav[aria-label="Main navigation"] a[aria-current="page"] { color: var(--link); background: #eef5fb; border-color: #cfe0ee; text-decoration: none; }
+    .headline-block { position: relative; }
+    a { color: var(--link); text-decoration: none; } a:hover { text-decoration: underline; }
+    section { padding: 2rem 0; border-top: 1px solid var(--line); }
+    h2 { margin: 0 0 0.75rem; font-family: var(--heading-font); font-size: 1.15rem; letter-spacing: -0.02em; }
+    p { margin: 0 0 0.9rem; }
+    ul { margin: 0 0 1rem; padding-left: 1.2rem; }
+    li { margin-bottom: 0.5rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.3rem; color: var(--muted); font-size: 0.85rem; border: 1px solid var(--line); border-radius: 999px; padding: 0.22rem 0.7rem; margin-bottom: 1.5rem; }
+    .back-link:hover { color: var(--link); text-decoration: none; border-color: var(--link); }
+    .case-bar { height: 5px; border-radius: 3px; margin-bottom: 1.5rem; background: linear-gradient(90deg, #2a9b66 0%, #1a6644 100%); }
+    .case-category { color: var(--muted); font-size: 0.82rem; margin: 0 0 0.3rem; text-transform: uppercase; letter-spacing: 0.07em; font-weight: 600; }
+    .case-title { margin: 0 0 0.5rem; font-family: var(--heading-font); font-size: clamp(1.35rem, 4vw, 1.9rem); letter-spacing: -0.02em; }
+    .case-subtitle { color: var(--muted); margin: 0; font-size: 0.95rem; }
+    .process-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; margin: 0.75rem 0 1rem; }
+    .process-step { padding: 0.3rem 0.7rem; background: #e9f8f0; color: #1a6644; border-radius: 4px; font-size: 0.78rem; font-weight: 700; }
+    .process-arrow { color: var(--muted); font-size: 0.8rem; }
+    .ct-concepts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin: 0.75rem 0; }
+    .ct-card { border: 1px solid #85cfb1; border-radius: 8px; padding: 0.85rem 1rem; background: #e9f8f0; border-left: 3px solid #2a9b66; }
+    .ct-label { font-weight: 700; font-size: 0.88rem; margin: 0 0 0.2rem; color: #1a6644; }
+    .ct-desc { color: var(--muted); font-size: 0.82rem; margin: 0; }
+    .skills-wrap { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.6rem; }
+    .skill-chip { padding: 0.22rem 0.65rem; background: #e9f8f0; border: 1px solid #85cfb1; border-radius: 999px; font-size: 0.8rem; color: #1a6644; }
+    @media (max-width: 600px) {
+      header { grid-template-columns: 120px 1fr; gap: 1rem; align-items: start; }
+      .profile-picture { width: 100px; height: 100px; }
+      .profile-block { justify-items: start; }
+      .profile-links { max-width: 120px; justify-content: start; }
+      .ct-concepts { grid-template-columns: 1fr; }
+    }
+    .theme-toggle { position: fixed; top: 1rem; right: 1rem; z-index: 100; width: 2.4rem; height: 2.4rem; border: 1px solid var(--line); border-radius: 50%; background: var(--bg); font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 6px rgba(0,0,0,0.12); padding: 0; }
+    .theme-toggle:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.18); }
+    html[data-theme="dark"] { --bg: #111111; --text: #e4e4e4; --muted: #9a9a9a; --line: #2d2d2d; --link: #79b5f5; }
+    html[data-theme="dark"] .profile-links a { background: #1e1e1e; border-color: #3a3a3a; }
+    html[data-theme="dark"] .profile-links .cv-button { background: var(--link); border-color: var(--link); }
+    html[data-theme="dark"] .profile-links a img { filter: brightness(0) invert(1); }
+    html[data-theme="dark"] .profile-picture { background: #2a2a2a; }
+    html[data-theme="dark"] nav[aria-label="Main navigation"] a[aria-current="page"] { background: #1a2a3a; border-color: #2d4a6a; }
+    html[data-theme="dark"] .process-step { background: #091c12; color: #85cfb1; }
+    html[data-theme="dark"] .ct-card { background: #0a1f14; border-color: #2a9b66; }
+    html[data-theme="dark"] .ct-label { color: #85cfb1; }
+    html[data-theme="dark"] .skill-chip { background: #091c12; border-color: #2a9b66; color: #85cfb1; }
+  </style>
+</head>
+<body>
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">☀️</button>
+  <main>
+    <header>
+      <div class="profile-block">
+        <img class="profile-picture" src="assets/headshot.png" alt="Portrait of Bárbara Fagundes" />
+        <nav aria-label="Profile links" class="profile-links">
+          <a class="cv-button" href="files/bfagundes_CV.pdf" aria-label="CV" title="CV">CV</a>
+          <a href="mailto:iambarbaraf@gmail.com" aria-label="Email" title="Email"><img src="assets/icons8-email-50.png" alt="Email" style="width: 1em; height: 1em; vertical-align: middle;" /></a>
+          <a href="https://scholar.google.com/citations?user=XupPbTIAAAAJ&hl=en&oi=ao" aria-label="Google Scholar" title="Google Scholar"><img src="assets/Google_Scholar_logo.svg" alt="Google Scholar" style="width: 1em; height: 1em; vertical-align: middle;" /></a>
+          <a href="https://www.researchgate.net/profile/Barbara-Fagundes-2" aria-label="ResearchGate" title="ResearchGate"><img src="assets/researchgate-logo.svg" alt="ResearchGate" style="width: 1em; height: 1em; vertical-align: middle;" /></a>
+          <a href="https://www.linkedin.com/in/iambarbaraf" aria-label="LinkedIn" title="LinkedIn"><img src="assets/icons8-linkedin-50.png" alt="LinkedIn" style="width: 1em; height: 1em; vertical-align: middle;" /></a>
+        </nav>
+      </div>
+      <div class="headline-block">
+        <h1>Barbara Fagundes, PhD</h1>
+        <p class="subtitle">Learning Scientist | AI in Education | Computing Education<br>K-12 STEM | Responsible AI Integration</p>
+        <nav aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="academia.html">Academia</a>
+          <a href="industry.html">Industry</a>
+          <a href="instructional-design.html" aria-current="page">Portfolio</a>
+          <a href="beyond-cv.html">Beyond the CV</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <div style="padding-top: 0.5rem;">
+      <a class="back-link" href="instructional-design.html">← Back to Portfolio</a>
+      <div class="case-bar"></div>
+      <p class="case-category">Learning Sciences &amp; Computing Education Research · Case Study</p>
+      <h2 class="case-title">Computational Thinking in K-2 Classrooms</h2>
+      <p class="case-subtitle">NSF-funded research · RECT Project &amp; PictureSTEM · Purdue University · 2018–2023</p>
+    </div>
+
+    <section>
+      <h2>1. Overview</h2>
+      <p>As part of two NSF-funded projects at Purdue University — the RECT Project and PictureSTEM — I contributed to research examining how young children in K-2 classrooms develop foundational computational thinking (CT) concepts through structured learning activities, educational robotics, and engineering-integrated curriculum.</p>
+      <p>This work generated peer-reviewed publications, curriculum resources deployed in multiple Indiana classrooms, and assessment instruments for measuring CT in early elementary learners.</p>
+    </section>
+
+    <section>
+      <h2>2. Challenge</h2>
+      <p>Computational thinking is increasingly recognized as a foundational 21st-century skill — but how do very young children (ages 5–8) actually develop CT concepts like sequencing, algorithm design, debugging, and pattern recognition? Most existing frameworks were designed for older learners, and there was limited evidence about what CT learning looks like in K-2 settings.</p>
+      <p>The projects aimed to fill that gap: designing age-appropriate learning experiences, studying their implementation in real classrooms, and producing evidence that could guide curriculum design and teacher practice.</p>
+    </section>
+
+    <section>
+      <h2>3. Audience</h2>
+      <p>First and second-grade students (ages 6–8) and their classroom teachers across multiple elementary schools in Indiana. Secondary audiences included curriculum designers, pre-service educators, and K-12 STEM education researchers.</p>
+    </section>
+
+    <section>
+      <h2>4. My Role</h2>
+      <ul>
+        <li>Managed large-scale classroom video data collection across Indiana school sites</li>
+        <li>Conducted video-based qualitative analysis of student CT behaviors and problem-solving strategies</li>
+        <li>Co-designed and piloted CT learning activities using educational robotics (Bee-Bot, Code-a-Pillar)</li>
+        <li>Contributed to the development and validation of CT assessment instruments for K-2 learners</li>
+        <li>Co-authored peer-reviewed publications in computing education and engineering education journals</li>
+        <li>Presented findings at ASEE, SIGCSE, and SITE International Conference</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>5. Research Process</h2>
+      <div class="process-flow">
+        <span class="process-step">Literature Review</span>
+        <span class="process-arrow">→</span>
+        <span class="process-step">Curriculum Co-Design</span>
+        <span class="process-arrow">→</span>
+        <span class="process-step">Classroom Implementation</span>
+        <span class="process-arrow">→</span>
+        <span class="process-step">Video Data Collection</span>
+        <span class="process-arrow">→</span>
+        <span class="process-step">Analysis</span>
+        <span class="process-arrow">→</span>
+        <span class="process-step">Publication</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>6. CT Concepts Studied</h2>
+      <div class="ct-concepts">
+        <div class="ct-card">
+          <p class="ct-label">Sequencing</p>
+          <p class="ct-desc">How students construct and interpret ordered sets of instructions to direct a robot or complete a task.</p>
+        </div>
+        <div class="ct-card">
+          <p class="ct-label">Algorithm Design</p>
+          <p class="ct-desc">How students plan, refine, and communicate multi-step solutions to engineering design problems.</p>
+        </div>
+        <div class="ct-card">
+          <p class="ct-label">Debugging</p>
+          <p class="ct-desc">How students identify and correct errors in their programs or instruction sequences.</p>
+        </div>
+        <div class="ct-card">
+          <p class="ct-label">Pattern Recognition</p>
+          <p class="ct-desc">How students identify repeating structures and apply them to simplify complex tasks.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>7. Selected Publications</h2>
+      <ul>
+        <li>Tank, K. M., Ottenbreit-Leftwich, A., Moore, T. J., Yang, S., Wafula, Z., Kim, J., <strong>Fagundes, B.</strong>, &amp; Chu, L. (2024). Investigating sequencing as a means to computational thinking in young children. <em>International Journal of Computer Science Education in Schools, 6</em>(3), 67–77.</li>
+        <li><strong>Fagundes, B.</strong>, &amp; Moore, T. J. (2025, June). Comparing computational thinking learning and engagement in first-grade boys and girls: A study of algorithm design and debugging (WIP). <em>ASEE Annual Conference</em>.</li>
+        <li>Wafula, Z., Tank, K. M., Moore, T. J., Ottenbreit-Leftwich, A. T., <strong>Fagundes, B.</strong>, &amp; Kim, J. (2024). Assessing computational thinking skills in early elementary students. <em>SITE International Conference</em>.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>8. Skills Demonstrated</h2>
+      <div class="skills-wrap">
+        <span class="skill-chip">Learning Sciences</span>
+        <span class="skill-chip">Computational Thinking</span>
+        <span class="skill-chip">K-12 STEM</span>
+        <span class="skill-chip">Curriculum Co-Design</span>
+        <span class="skill-chip">Video Data Analysis</span>
+        <span class="skill-chip">Assessment Design</span>
+        <span class="skill-chip">Qualitative Research</span>
+        <span class="skill-chip">Educational Robotics</span>
+        <span class="skill-chip">Academic Writing</span>
+        <span class="skill-chip">NSF Research</span>
+      </div>
+    </section>
+
+  </main>
+  <script>
+    (function() {
+      var toggle = document.getElementById('theme-toggle');
+      function applyTheme(dark) {
+        if (dark) { document.documentElement.setAttribute('data-theme', 'dark'); }
+        else { document.documentElement.removeAttribute('data-theme'); }
+        toggle.textContent = dark ? '🌙' : '☀️';
+      }
+      var saved = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(saved === 'dark' || (!saved && prefersDark));
+      toggle.addEventListener('click', function() {
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        applyTheme(!isDark);
+      });
+    })();
+  </script>
+</body>
+</html>
