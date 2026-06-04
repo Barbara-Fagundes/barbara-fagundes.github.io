@@ -56,6 +56,17 @@
     /* Skills */
     .skills-wrap { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.6rem; }
     .skill-chip { padding: 0.22rem 0.65rem; background: #eaf5ff; border: 1px solid #86bff4; border-radius: 999px; font-size: 0.8rem; color: #1f62b2; }
+    /* Sample artifacts */
+    .artifact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 0.75rem 0; }
+    .artifact-card { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .artifact-thumb { height: 100px; display: flex; align-items: center; justify-content: center; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.85); text-align: center; padding: 0 0.75rem; }
+    .artifact-thumb-1 { background: linear-gradient(135deg, #4a90d9 0%, #235789 100%); }
+    .artifact-thumb-2 { background: linear-gradient(135deg, #5ba0e0 0%, #2d6baa 100%); }
+    .artifact-thumb-3 { background: linear-gradient(135deg, #6aaddb 0%, #3678b8 100%); }
+    .artifact-thumb-4 { background: linear-gradient(135deg, #79baf0 0%, #4285c6 100%); }
+    .artifact-caption { padding: 0.65rem 0.8rem; }
+    .artifact-caption strong { display: block; font-size: 0.85rem; margin-bottom: 0.15rem; }
+    .artifact-caption p { font-size: 0.8rem; color: var(--muted); margin: 0; }
     /* Portfolio note */
     .portfolio-note { border: 1px solid var(--line); border-radius: 8px; padding: 0.9rem 1.1rem; background: var(--bg); font-size: 0.84rem; color: var(--muted); font-style: italic; margin-top: 2rem; }
     @media (max-width: 600px) {
@@ -65,6 +76,7 @@
       .profile-links { max-width: 120px; justify-content: start; }
       .process-detail-row { grid-template-columns: 1fr; gap: 0.3rem; }
       .features-grid { grid-template-columns: 1fr; }
+      .artifact-grid { grid-template-columns: 1fr; }
     }
     .theme-toggle { position: fixed; top: 1rem; right: 1rem; z-index: 100; width: 2.4rem; height: 2.4rem; border: 1px solid var(--line); border-radius: 50%; background: var(--bg); font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 6px rgba(0,0,0,0.12); padding: 0; }
     .theme-toggle:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.18); }
@@ -79,6 +91,7 @@
     html[data-theme="dark"] .course-map th { background: #0d1d30; color: #79b5f5; border-color: #3d82e6; }
     html[data-theme="dark"] .skill-chip { background: #0d1d30; border-color: #3d82e6; color: #79b5f5; }
     html[data-theme="dark"] .portfolio-note { background: #1a1a1a; border-color: #2d2d2d; }
+    html[data-theme="dark"] .artifact-card { background: #1a1a1a; border-color: #2d2d2d; }
   </style>
 </head>
 <body>
@@ -130,7 +143,7 @@
 
     <section>
       <h2>My Role</h2>
-      <p>I supported the instructional design and development of the course by creating and revising module content, slide decks, instructional scripts, examples, accessibility-focused materials, and applied learning activities. I also helped organize the course structure, align learning goals with activities and assessments, and revise materials based on instructor feedback.</p>
+      <p>I supported the instructional design, development, and LMS implementation of the course by creating and revising module content, slide decks, instructional scripts, examples, accessibility-focused materials, Brightspace homework assignments, and applied learning activities. I also helped organize course content in Brightspace, align learning goals with activities and assessments, and revise materials based on instructor feedback.</p>
     </section>
 
     <section>
@@ -141,9 +154,11 @@
         <li>Scenario-based examples</li>
         <li>Accessibility-focused learning materials</li>
         <li>Applied learning activities</li>
-        <li>Assessment and reflection prompts</li>
+        <li>Homework assignments and assessment prompts</li>
+        <li>Brightspace course content setup</li>
         <li>Multimedia-ready instructional content</li>
         <li>Materials designed for face-to-face and asynchronous delivery</li>
+        <li>LMS-based learner navigation</li>
       </ul>
     </section>
 
@@ -159,6 +174,8 @@
         <span class="process-step">Prototype</span>
         <span class="process-arrow">→</span>
         <span class="process-step">Develop</span>
+        <span class="process-arrow">→</span>
+        <span class="process-step">Implement</span>
         <span class="process-arrow">→</span>
         <span class="process-step">Iterate</span>
       </div>
@@ -182,6 +199,10 @@
         <div class="process-detail-row">
           <span class="process-detail-label">Develop</span>
           <span class="process-detail-text">Created instructional materials that could support both face-to-face and asynchronous online delivery.</span>
+        </div>
+        <div class="process-detail-row">
+          <span class="process-detail-label">Implement</span>
+          <span class="process-detail-text">Organized course materials and homework assignments in Brightspace to support learner navigation, access, and course delivery.</span>
         </div>
         <div class="process-detail-row">
           <span class="process-detail-label">Iterate</span>
@@ -221,15 +242,50 @@
     </section>
 
     <section>
+      <h2>Sample Artifacts</h2>
+      <div class="artifact-grid">
+        <div class="artifact-card">
+          <div class="artifact-thumb artifact-thumb-1">Module Map</div>
+          <div class="artifact-caption">
+            <strong>Module Content Map</strong>
+            <p>Example of module content structure and learner-facing instructional sequence across the three course modules.</p>
+          </div>
+        </div>
+        <div class="artifact-card">
+          <div class="artifact-thumb artifact-thumb-2">Slide Sample</div>
+          <div class="artifact-caption">
+            <strong>Instructional Slide Deck</strong>
+            <p>Sample slide deck designed to introduce online teaching principles with accessibility and visual clarity in mind.</p>
+          </div>
+        </div>
+        <div class="artifact-card">
+          <div class="artifact-thumb artifact-thumb-3">Script Excerpt</div>
+          <div class="artifact-caption">
+            <strong>Instructional Script</strong>
+            <p>Narration script excerpt developed for a module on accessibility and learner engagement in online environments.</p>
+          </div>
+        </div>
+        <div class="artifact-card">
+          <div class="artifact-thumb artifact-thumb-4">Brightspace Assignment</div>
+          <div class="artifact-caption">
+            <strong>Brightspace Assignment Example</strong>
+            <p>Sample assessment prompt created to support application of online teaching principles in a real course design task.</p>
+          </div>
+        </div>
+      </div>
+      <p style="color:var(--muted);font-size:0.82rem;font-style:italic;margin-top:0.25rem;">Artifacts available upon request.</p>
+    </section>
+
+    <section>
       <h2>Learning Experience Design Features</h2>
       <ul class="features-grid">
         <li>Scaffolded module structure</li>
-        <li>Applied design tasks</li>
         <li>Scenario-based examples</li>
-        <li>Accessibility guidance</li>
         <li>Assessment alignment</li>
+        <li>Brightspace LMS setup</li>
+        <li>Homework and applied design tasks</li>
+        <li>Accessibility guidance</li>
         <li>Instructional scripts</li>
-        <li>Slide-based instruction</li>
         <li>Learner engagement strategies</li>
         <li>Iteration based on feedback</li>
       </ul>
@@ -244,15 +300,15 @@
       <h2>Skills Demonstrated</h2>
       <div class="skills-wrap">
         <span class="skill-chip">Instructional Design</span>
-        <span class="skill-chip">Content Sequencing</span>
-        <span class="skill-chip">Learning Objectives</span>
-        <span class="skill-chip">Online Learning</span>
+        <span class="skill-chip">Learning Experience Design</span>
         <span class="skill-chip">E-Learning Development</span>
-        <span class="skill-chip">Accessibility</span>
+        <span class="skill-chip">LMS Implementation</span>
+        <span class="skill-chip">Brightspace</span>
         <span class="skill-chip">Assessment Design</span>
+        <span class="skill-chip">Assignment Creation</span>
+        <span class="skill-chip">Accessibility</span>
         <span class="skill-chip">Instructional Writing</span>
-        <span class="skill-chip">Script Writing</span>
-        <span class="skill-chip">Brightspace LMS</span>
+        <span class="skill-chip">Content Sequencing</span>
         <span class="skill-chip">Faculty Collaboration</span>
       </div>
     </section>
