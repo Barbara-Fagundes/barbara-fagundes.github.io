@@ -14,33 +14,68 @@
     })();
   </script>
   <style>
-    :root { --bg: #fafafa; --text: #171717; --muted: #666; --line: #e6e6e6; --link: #235789; --max: 760px; --heading-font: Georgia, "Times New Roman", Times, serif; }
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--text); background: var(--bg); line-height: 1.65; }
-    main { max-width: var(--max); margin: 0 auto; padding: 4rem 1.25rem; }
-    header { margin-bottom: 3rem; display: grid; grid-template-columns: 140px 1fr; gap: 1.5rem; align-items: center; }
-    .profile-block { display: grid; gap: 0.8rem; justify-items: center; }
-    .profile-picture { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line); background: #eee; }
-    .profile-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.45rem; width: 100%; margin-top: 0; }
-    .profile-links a { display: inline-flex; align-items: center; justify-content: center; width: 2.15rem; height: 2.15rem; border: 1px solid var(--line); border-radius: 50%; color: var(--muted); background: white; font-size: 0.78rem; font-weight: 700; line-height: 1; }
-    .profile-links a:hover { color: white; background: var(--link); border-color: var(--link); text-decoration: none; }
-    .profile-links .cv-button { width: 2.7rem; border-radius: 999px; background: var(--link); border-color: var(--link); color: white; }
-    h1 { margin: 0 0 0.4rem; font-family: var(--heading-font); font-size: clamp(1.3rem, 3.8vw, 2.2rem); line-height: 1; letter-spacing: -0.04em; white-space: nowrap; }
-    .subtitle { margin: 0; color: var(--muted); font-size: 1.05rem; }
-    nav { display: flex; flex-wrap: wrap; gap: 0.85rem; margin-top: 1.4rem; font-size: 0.95rem; }
-    nav[aria-label="Main navigation"] a { padding: 0.28rem 0.62rem; border: 1px solid transparent; border-radius: 999px; }
-    nav[aria-label="Main navigation"] a[aria-current="page"] { color: var(--link); background: #eef5fb; border-color: #cfe0ee; text-decoration: none; }
-    .headline-block { position: relative; }
+    :root {
+      --bg: #f9f7f4; --surface: #ffffff; --text: #1a1a18; --muted: #6b6b62;
+      --line: #e4e0d8; --link: #235789; --accent: #b05e3c; --accent-soft: #f5ede8;
+      --max: 860px; --serif: Georgia, "Times New Roman", Times, serif;
+      --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    html[data-theme="dark"] {
+      --bg: #111110; --surface: #1c1c1a; --text: #e8e6e0; --muted: #9a9a8e;
+      --line: #2e2e2a; --link: #79b5f5; --accent: #d98060; --accent-soft: #261a14;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: var(--sans); color: var(--text); background: var(--bg); line-height: 1.7; }
     a { color: var(--link); text-decoration: none; } a:hover { text-decoration: underline; }
-    section { padding: 2rem 0; border-top: 1px solid var(--line); }
-    h2 { margin: 0 0 1rem; font-family: var(--heading-font); font-size: 1.25rem; letter-spacing: -0.02em; }
-    h3 { margin: 1.6rem 0 0.75rem; font-family: var(--heading-font); font-size: 1.05rem; letter-spacing: -0.01em; }
-    p { margin: 0 0 1rem; }
-    ul { margin: 0; padding-left: 1.2rem; }
-    li { margin-bottom: .85rem; }
+    h1, h2, h3 { font-family: var(--serif); line-height: 1.15; }
+    p { margin: 0 0 0.9rem; }
+    ul { margin: 0 0 1rem; padding-left: 1.2rem; }
+    li { margin-bottom: 0.75rem; }
+    em { font-style: italic; }
+    .page { max-width: var(--max); margin: 0 auto; padding: 0 1.25rem; }
+
+    /* topbar */
+    .topbar { border-bottom: 1px solid var(--line); background: var(--bg); position: sticky; top: 0; z-index: 50; }
+    .topbar-inner { max-width: var(--max); margin: 0 auto; padding: 0 1.25rem; display: flex; align-items: center; justify-content: space-between; height: 3.2rem; gap: 1rem; }
+    .topbar-name { font-family: var(--serif); font-size: 0.95rem; white-space: nowrap; }
+    .topbar-nav { display: flex; flex-wrap: wrap; gap: 0.2rem; align-items: center; }
+    .topbar-nav a { padding: 0.22rem 0.55rem; border: 1px solid transparent; border-radius: 999px; font-size: 0.85rem; color: var(--muted); }
+    .topbar-nav a:hover { color: var(--text); text-decoration: none; border-color: var(--line); }
+    .topbar-nav a[aria-current="page"] { color: var(--link); background: #eef5fb; border-color: #cfe0ee; }
+    html[data-theme="dark"] .topbar-nav a[aria-current="page"] { background: #1a2a3a; border-color: #2d4a6a; }
+
+    /* theme toggle */
+    .theme-toggle { position: fixed; top: 0.75rem; right: 1rem; z-index: 100; width: 2.3rem; height: 2.3rem; border: 1px solid var(--line); border-radius: 50%; background: var(--bg); font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 6px rgba(0,0,0,0.1); padding: 0; }
+    .theme-toggle:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.16); }
+
+    /* profile strip */
+    .profile-strip { display: flex; align-items: center; gap: 1.5rem; padding: 2rem 0 2.5rem; }
+    .profile-picture { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line); background: var(--surface); flex-shrink: 0; }
+    html[data-theme="dark"] .profile-picture { background: #2a2a26; }
+    .profile-info h1 { margin: 0 0 0.25rem; font-size: clamp(1.2rem, 3.5vw, 1.9rem); letter-spacing: -0.03em; }
+    .profile-info .subtitle { margin: 0 0 0.6rem; color: var(--muted); font-size: 0.9rem; line-height: 1.45; }
+    .profile-links { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .profile-links a { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border: 1px solid var(--line); border-radius: 50%; background: var(--surface); }
+    .profile-links a:hover { border-color: var(--accent); text-decoration: none; }
+    .profile-links a img { width: 0.95em; height: 0.95em; vertical-align: middle; }
+    .profile-links .cv-button { width: 2.5rem; border-radius: 999px; background: var(--link); border-color: var(--link); color: white; font-size: 0.75rem; font-weight: 700; }
+    html[data-theme="dark"] .profile-links a { background: #1e1e1c; border-color: #3a3a3a; }
+    html[data-theme="dark"] .profile-links a img { filter: brightness(0) invert(1); }
+    html[data-theme="dark"] .profile-links .cv-button { background: var(--link); border-color: var(--link); }
+
+    /* sections */
+    section { padding: 2.5rem 0; border-top: 1px solid var(--line); }
+    h2 { margin: 0 0 0.75rem; font-size: 1.25rem; letter-spacing: -0.02em; }
+    h3 { margin: 1.4rem 0 0.6rem; font-size: 1.05rem; letter-spacing: -0.01em; }
     .item-title { font-weight: 700; }
     .meta { color: var(--muted); }
     .contact-links { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+
+    /* seeking callout */
+    .seeking-bar { background: var(--accent-soft); border: 1px solid rgba(176,94,60,0.2); border-radius: 8px; padding: 0.85rem 1.1rem; font-size: 0.9rem; color: var(--text); font-style: italic; }
+    html[data-theme="dark"] .seeking-bar { border-color: rgba(217,128,96,0.25); }
+
+    /* ── Collaboration map (preserved exactly) ── */
     .collab-section { text-align: center; }
     .collab-label { margin: 0; color: var(--muted); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
     .collab-subtitle { margin: 0.2rem 0 1.1rem; color: var(--muted); font-size: 0.95rem; }
@@ -77,7 +112,7 @@
     .project-node .node-category { fill: var(--muted); font-size: 9px; }
     .collab-detail { margin: 1.35rem auto 0; padding: 1.4rem; border: 1px solid #d7d7d7; border-radius: 8px; background: #fff; text-align: left; }
     .collab-placeholder { margin: 0; color: var(--muted); text-align: center; }
-    .detail-title { margin: 0 0 0.15rem; font-family: var(--heading-font); font-size: 1.25rem; letter-spacing: -0.01em; }
+    .detail-title { margin: 0 0 0.15rem; font-family: var(--serif); font-size: 1.25rem; letter-spacing: -0.01em; }
     .detail-type { margin: 0 0 0.9rem; color: var(--muted); font-size: 0.88rem; }
     .collab-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; margin-top: 1rem; }
     .collaborator-card { padding: 0.85rem; border: 1px solid var(--line); border-radius: 8px; background: #fbfbfb; line-height: 1.4; }
@@ -85,32 +120,11 @@
     .collaborator-role { display: block; margin-top: 0.18rem; color: var(--muted); font-size: 0.86rem; }
     .detail-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.6rem 0 0.9rem; }
     .detail-tag { padding: 0.2rem 0.6rem; background: #eaf5ff; border: 1px solid #86bff4; border-radius: 999px; font-size: 0.82rem; color: #1f62b2; }
-    @media (max-width: 600px) {
-      header { grid-template-columns: 120px 1fr; gap: 1rem; align-items: start; }
-      .profile-picture { width: 100px; height: 100px; }
-      .profile-block { justify-items: start; }
-      .profile-links { max-width: 120px; justify-content: start; }
-      .collab-legend { justify-content: flex-start; text-align: left; }
-      .collab-grid { grid-template-columns: 1fr; }
-      .collab-detail { padding: 1rem; }
-    }
-    /* ── Theme toggle button ─────────────────────── */
-    .theme-toggle { position: fixed; top: 1rem; right: 1rem; z-index: 100; width: 2.4rem; height: 2.4rem; border: 1px solid var(--line); border-radius: 50%; background: var(--bg); font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 6px rgba(0,0,0,0.12); padding: 0; }
-    .theme-toggle:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.18); }
-    /* ── Dark mode ───────────────────────────────── */
-    html[data-theme="dark"] {
-      --bg: #111111;
-      --text: #e4e4e4;
-      --muted: #9a9a9a;
-      --line: #2d2d2d;
-      --link: #79b5f5;
-    }
-    html[data-theme="dark"] .profile-links a { background: #1e1e1e; border-color: #3a3a3a; }
-    html[data-theme="dark"] .profile-links .cv-button { background: var(--link); border-color: var(--link); }
-    html[data-theme="dark"] .profile-links a img { filter: brightness(0) invert(1); }
-    html[data-theme="dark"] .network-line { stroke: #4a4a4a; }
+
+    /* ── Dark mode for map ── */
     html[data-theme="dark"] .collab-legend { color: var(--text); }
     html[data-theme="dark"] .collab-subtitle { color: var(--muted); }
+    html[data-theme="dark"] .network-line { stroke: #4a4a4a; }
     html[data-theme="dark"] .center-node rect { fill: #2a1020; stroke: #c4607a; }
     html[data-theme="dark"] .center-node text { fill: #f0c0cc; }
     html[data-theme="dark"] .project-node rect { fill: #1c1c1c; stroke: #3a3a3a; }
@@ -125,220 +139,231 @@
     html[data-theme="dark"] .project-node[data-category="teaching"]:hover rect,
     html[data-theme="dark"] .project-node[data-category="teaching"]:focus rect { fill: #091c12; stroke: #85cfb1; }
     html[data-theme="dark"] .collab-detail { background: #1a1a1a; border-color: #2d2d2d; }
-    html[data-theme="dark"] .collaborator-card { background: #1e1e1e; border-color: #2d2d2d; }
+    html[data-theme="dark"] .collaborator-card { background: #1e1e1c; border-color: #2d2d2d; }
     html[data-theme="dark"] .detail-tag { background: #0d1d30; border-color: #3d82e6; color: #79b5f5; }
+
+    @media (max-width: 620px) {
+      .profile-strip { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 1.5rem 0 2rem; }
+      .topbar-name { display: none; }
+      .collab-legend { justify-content: flex-start; text-align: left; }
+      .collab-grid { grid-template-columns: 1fr; }
+      .collab-detail { padding: 1rem; }
+    }
   </style>
 </head>
 <body>
   <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">☀️</button>
-  <main>
-    <header>
-      <div class="profile-block">
-        <img class="profile-picture" src="assets/headshot.png" alt="Portrait of Bárbara Fagundes" />
-        <nav aria-label="Profile links" class="profile-links">
-          <a class="cv-button" href="files/bfagundes_CV.pdf" aria-label="CV" title="CV">CV</a>
-          <a href="mailto:iambarbaraf@gmail.com" aria-label="Email" title="Email"><img src="assets/icons8-email-50.png" alt="Email" style="width: 1em; height: 1em; vertical-align: middle;" /></a>
-          <a href="https://scholar.google.com/citations?user=XupPbTIAAAAJ&hl=en&oi=ao" aria-label="Google Scholar" title="Google Scholar"><img src="assets/Google_Scholar_logo.svg" alt="Google Scholar" style="width: 1em; height: 1em; vertical-align: middle;" /></a>
-          <a href="https://www.researchgate.net/profile/Barbara-Fagundes-2" aria-label="ResearchGate" title="ResearchGate"><img src="assets/researchgate-logo.svg" alt="ResearchGate" style="width: 1em; height: 1em; vertical-align: middle;" /></a>
-          <a href="https://www.linkedin.com/in/iambarbaraf" aria-label="LinkedIn" title="LinkedIn"><img src="assets/icons8-linkedin-50.png" alt="LinkedIn" style="width: 1em; height: 1em; vertical-align: middle;" /></a>
-        </nav>
+
+  <nav class="topbar" aria-label="Site navigation">
+    <div class="topbar-inner">
+      <span class="topbar-name">Bárbara Fagundes, PhD</span>
+      <div class="topbar-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="academia.html" aria-current="page">Academia</a>
+        <a href="industry.html">Industry</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="beyond-cv.html">Beyond the CV</a>
+        <a href="contact.html">Contact</a>
       </div>
-      <div class="headline-block">
+    </div>
+  </nav>
+
+  <main class="page">
+    <div class="profile-strip">
+      <img class="profile-picture" src="assets/headshot.png" alt="Portrait of Bárbara Fagundes" />
+      <div class="profile-info">
         <h1>Barbara Fagundes, PhD</h1>
         <p class="subtitle">Postdoctoral Researcher | Responsible AI adoption<br>Computing Education | Faculty Development</p>
-        <nav aria-label="Main navigation">
-          <a href="index.html">Home</a>
-          <a href="about.html">About</a>
-          <a href="academia.html" aria-current="page">Academia</a>
-          <a href="industry.html">Industry</a>
-          <a href="portfolio.html">Portfolio</a>
-          <a href="beyond-cv.html">Beyond the CV</a>
-          <a href="contact.html">Contact</a>
+        <nav aria-label="Profile links" class="profile-links">
+          <a class="cv-button" href="files/bfagundes_CV.pdf" aria-label="CV" title="CV">CV</a>
+          <a href="mailto:iambarbaraf@gmail.com" aria-label="Email" title="Email"><img src="assets/icons8-email-50.png" alt="Email" /></a>
+          <a href="https://scholar.google.com/citations?user=XupPbTIAAAAJ&hl=en&oi=ao" aria-label="Google Scholar" title="Google Scholar"><img src="assets/Google_Scholar_logo.svg" alt="Google Scholar" /></a>
+          <a href="https://www.researchgate.net/profile/Barbara-Fagundes-2" aria-label="ResearchGate" title="ResearchGate"><img src="assets/researchgate-logo.svg" alt="ResearchGate" /></a>
+          <a href="https://www.linkedin.com/in/iambarbaraf" aria-label="LinkedIn" title="LinkedIn"><img src="assets/icons8-linkedin-50.png" alt="LinkedIn" /></a>
         </nav>
       </div>
-    </header>
-
-  <section>
-    <p style="font-style: italic; color: var(--muted); margin-bottom: 0;">I am actively seeking postdoctoral, research scientist, and faculty positions focused on AI in teaching and learning, computing education research, K-12 STEM, and faculty development.</p>
-  </section>
-
-  <section>
-    <h2>Research agenda</h2>
-    <p>Bárbara's research agenda focuses on strengthening the computing education pipeline across three interconnected areas: early computational thinking in K-2 settings, undergraduate STEM engagement and persistence, and responsible AI integration in computing and engineering education.</p>
-    <p>Her doctoral research examined how young children in K-2 classrooms develop foundational computational thinking concepts, including sequencing, algorithm design, and debugging, through structured learning experiences and educational robotics. This work, conducted within an NSF-funded project, generated peer-reviewed publications and curriculum resources used in multiple classroom settings.</p>
-    <p>At the postdoctoral level, her work has expanded in two directions. The first examines undergraduate student autonomy and motivation in STEM courses through the lens of Self-Determination Theory, with a focus on identifying the instructional practices that support or undermine student engagement and persistence. The second investigates how undergraduate students in computer science and engineering courses adopt and ethically use generative AI tools, with attention to learning processes, responsible use, and implications for course and curriculum design.</p>
-    <p>Across all three areas, her work is methodologically grounded in qualitative and mixed-methods approaches, including classroom video analysis, focus groups, interviews, thematic analysis, and survey design, and is oriented toward research-to-practice translation: producing findings that shape how instructors teach, how curricula are designed, and how learning environments are built.</p>
-  </section>
-
-  <section>
-    <h2>Current projects</h2>
-    <ul>
-      <li><span class="item-title">Generative AI in Undergraduate CS and Engineering Courses</span> Leading qualitative research on student adoption and ethical use of generative AI tools in technical undergraduate coursework. Methods include focus groups, thematic analysis, and interpretation of students' responsible AI use patterns. Findings are contributing to a published arXiv preprint and an ongoing manuscript on instructional implications for computing and engineering education.</li>
-      <li><span class="item-title">Autonomy-Supportive Instructional Practices in Higher Education STEM</span> Developing a first-author manuscript examining faculty practices, barriers, and evolving perceptions around autonomy-supportive teaching in higher education STEM classrooms. Grounded in Self-Determination Theory. Target journal: <em>International Journal of STEM Education</em>.</li>
-      <li><span class="item-title">Student Pedagogy Advocates Program</span> Co-leading a student-faculty partnership initiative at Purdue's Center for Instructional Excellence, embedding undergraduate student perspectives into instructional improvement processes. Work includes mentoring undergraduate partners and contributing to a conference paper disseminating the program model.</li>
-    </ul>
-  </section>
-
-  <section class="collab-section" aria-labelledby="collab-heading">
-    <p class="collab-label" id="collab-heading">Research &amp; Teaching Collaborations</p>
-    <p class="collab-subtitle">Click any project to see collaborators.</p>
-
-    <div class="collab-legend" aria-label="Collaboration category legend">
-      <span class="legend-item"><span class="legend-swatch legend-blue" aria-hidden="true"></span>Computing &amp; STEM education</span>
-      <span class="legend-item"><span class="legend-swatch legend-amber" aria-hidden="true"></span>AI in education</span>
-      <span class="legend-item"><span class="legend-swatch legend-purple" aria-hidden="true"></span>Learning &amp; faculty development</span>
-      <span class="legend-item"><span class="legend-swatch legend-green" aria-hidden="true"></span>Teaching &amp; curriculum</span>
     </div>
 
-    <div class="network-wrap">
-      <svg class="collab-network" viewBox="0 0 760 470" role="img" aria-label="Network diagram connecting Barbara Fagundes to research and teaching projects">
-        <line class="network-line" x1="380" y1="172" x2="380" y2="37" />
-        <line class="network-line" x1="380" y1="172" x2="120" y2="100" />
-        <line class="network-line" x1="380" y1="172" x2="640" y2="100" />
-        <line class="network-line" x1="380" y1="172" x2="125" y2="229" />
-        <line class="network-line" x1="380" y1="172" x2="632" y2="229" />
-        <line class="network-line" x1="380" y1="172" x2="380" y2="319" />
-        <line class="network-line" x1="380" y1="172" x2="165" y2="319" />
-        <line class="network-line" x1="380" y1="172" x2="585" y2="319" />
-        <line class="network-line" x1="380" y1="172" x2="90" y2="415" />
-        <line class="network-line" x1="380" y1="172" x2="380" y2="415" />
-        <line class="network-line" x1="380" y1="172" x2="645" y2="418" />
+    <section>
+      <p class="seeking-bar">I am actively seeking postdoctoral, research scientist, and faculty positions focused on AI in teaching and learning, computing education research, K-12 STEM, and faculty development.</p>
+    </section>
 
-        <g class="center-node" aria-hidden="true">
-          <rect x="310" y="148" width="140" height="48" rx="8" />
-          <text class="center-name" x="380" y="168" text-anchor="middle">Barbara Fagundes</text>
-          <text x="380" y="182" text-anchor="middle">Purdue University</text>
-        </g>
+    <section>
+      <h2>Research agenda</h2>
+      <p>Bárbara's research agenda focuses on strengthening the computing education pipeline across three interconnected areas: early computational thinking in K-2 settings, undergraduate STEM engagement and persistence, and responsible AI integration in computing and engineering education.</p>
+      <p>Her doctoral research examined how young children in K-2 classrooms develop foundational computational thinking concepts, including sequencing, algorithm design, and debugging, through structured learning experiences and educational robotics. This work, conducted within an NSF-funded project, generated peer-reviewed publications and curriculum resources used in multiple classroom settings.</p>
+      <p>At the postdoctoral level, her work has expanded in two directions. The first examines undergraduate student autonomy and motivation in STEM courses through the lens of Self-Determination Theory, with a focus on identifying the instructional practices that support or undermine student engagement and persistence. The second investigates how undergraduate students in computer science and engineering courses adopt and ethically use generative AI tools, with attention to learning processes, responsible use, and implications for course and curriculum design.</p>
+      <p>Across all three areas, her work is methodologically grounded in qualitative and mixed-methods approaches, including classroom video analysis, focus groups, interviews, thematic analysis, and survey design, and is oriented toward research-to-practice translation: producing findings that shape how instructors teach, how curricula are designed, and how learning environments are built.</p>
+    </section>
 
-        <g class="project-node" data-project="rect" data-category="computing" role="button" tabindex="0" aria-label="NSF RECT Project">
-          <rect x="300" y="12" width="160" height="50" rx="8" />
-          <text class="node-title" x="380" y="31" text-anchor="middle">NSF RECT Project</text>
-          <text class="node-category" x="380" y="45" text-anchor="middle">Computing &amp; STEM education</text>
-        </g>
-        <g class="project-node" data-project="cistar" data-category="teaching" role="button" tabindex="0" aria-label="CISTAR NSF Center">
-          <rect x="30" y="75" width="180" height="50" rx="8" />
-          <text class="node-title" x="120" y="95" text-anchor="middle">CISTAR NSF Center</text>
-          <text class="node-category" x="120" y="109" text-anchor="middle">Teaching &amp; curriculum</text>
-        </g>
-        <g class="project-node" data-project="ai-lab" data-category="ai" role="button" tabindex="0" aria-label="AI-Lab Study">
-          <rect x="550" y="75" width="180" height="50" rx="8" />
-          <text class="node-title" x="640" y="95" text-anchor="middle">AI-Lab Study</text>
-          <text class="node-category" x="640" y="109" text-anchor="middle">AI in education</text>
-        </g>
-        <g class="project-node" data-project="autonomy" data-category="learning" role="button" tabindex="0" aria-label="Autonomy and SDT">
-          <rect x="30" y="200" width="190" height="58" rx="8" />
-          <text class="node-title" x="125" y="220" text-anchor="middle">Autonomy &amp; SDT</text>
-          <text class="node-category" x="125" y="234" text-anchor="middle">Learning &amp; faculty</text>
-          <text class="node-category" x="125" y="246" text-anchor="middle">development</text>
-        </g>
-        <g class="project-node" data-project="spa" data-category="learning" role="button" tabindex="0" aria-label="Student Pedagogy Advocates">
-          <rect x="535" y="200" width="195" height="58" rx="8" />
-          <text class="node-title" x="632" y="217" text-anchor="middle">Student Pedagogy</text>
-          <text class="node-title" x="632" y="230" text-anchor="middle">Advocates</text>
-          <text class="node-category" x="632" y="244" text-anchor="middle">Learning &amp; faculty development</text>
-        </g>
-        <g class="project-node" data-project="fye" data-category="teaching" role="button" tabindex="0" aria-label="First-Year Engineering">
-          <rect x="285" y="290" width="190" height="58" rx="8" />
-          <text class="node-title" x="380" y="310" text-anchor="middle">First-Year Engineering</text>
-          <text class="node-category" x="380" y="324" text-anchor="middle">Teaching &amp; curriculum</text>
-        </g>
-        <g class="project-node" data-project="online" data-category="teaching" role="button" tabindex="0" aria-label="Teaching Engineering Online">
-          <rect x="70" y="290" width="190" height="58" rx="8" />
-          <text class="node-title" x="165" y="310" text-anchor="middle">Teaching Eng. Online</text>
-          <text class="node-category" x="165" y="324" text-anchor="middle">Teaching &amp; curriculum</text>
-        </g>
-        <g class="project-node" data-project="graduate-ta" data-category="teaching" role="button" tabindex="0" aria-label="Graduate Course TA">
-          <rect x="490" y="290" width="190" height="58" rx="8" />
-          <text class="node-title" x="585" y="310" text-anchor="middle">Graduate Course TA</text>
-          <text class="node-category" x="585" y="324" text-anchor="middle">Teaching &amp; curriculum</text>
-        </g>
-        <g class="project-node" data-project="engrteams" data-category="computing" role="button" tabindex="0" aria-label="EngrTEAMS">
-          <rect x="10" y="390" width="160" height="50" rx="8" />
-          <text class="node-title" x="90" y="410" text-anchor="middle">EngrTEAMS</text>
-          <text class="node-category" x="90" y="424" text-anchor="middle">Computing &amp; STEM education</text>
-        </g>
-        <g class="project-node" data-project="picturestem" data-category="computing" role="button" tabindex="0" aria-label="PictureSTEM">
-          <rect x="300" y="390" width="160" height="50" rx="8" />
-          <text class="node-title" x="380" y="410" text-anchor="middle">PictureSTEM</text>
-          <text class="node-category" x="380" y="424" text-anchor="middle">Computing &amp; STEM education</text>
-        </g>
-        <g class="project-node" data-project="integrated-stem" data-category="computing" role="button" tabindex="0" aria-label="Integrated STEM and Computing Learning">
-          <rect x="535" y="390" width="215" height="58" rx="8" />
-          <text class="node-title" x="642" y="408" text-anchor="middle">Integrated STEM and</text>
-          <text class="node-title" x="642" y="421" text-anchor="middle">Computing Learning</text>
-          <text class="node-category" x="642" y="435" text-anchor="middle">Computing &amp; STEM education</text>
-        </g>
-      </svg>
-    </div>
+    <section>
+      <h2>Current projects</h2>
+      <ul>
+        <li><span class="item-title">Generative AI in Undergraduate CS and Engineering Courses</span> Leading qualitative research on student adoption and ethical use of generative AI tools in technical undergraduate coursework. Methods include focus groups, thematic analysis, and interpretation of students' responsible AI use patterns. Findings are contributing to a published arXiv preprint and an ongoing manuscript on instructional implications for computing and engineering education.</li>
+        <li><span class="item-title">Autonomy-Supportive Instructional Practices in Higher Education STEM</span> Developing a first-author manuscript examining faculty practices, barriers, and evolving perceptions around autonomy-supportive teaching in higher education STEM classrooms. Grounded in Self-Determination Theory. Target journal: <em>International Journal of STEM Education</em>.</li>
+        <li><span class="item-title">Student Pedagogy Advocates Program</span> Co-leading a student-faculty partnership initiative at Purdue's Center for Instructional Excellence, embedding undergraduate student perspectives into instructional improvement processes. Work includes mentoring undergraduate partners and contributing to a conference paper disseminating the program model.</li>
+      </ul>
+    </section>
 
-    <div class="collab-detail" id="collab-detail" aria-live="polite">
-      <p class="collab-placeholder">Click a project node above to see collaborators and details.</p>
-    </div>
-  </section>
+    <section class="collab-section" aria-labelledby="collab-heading">
+      <p class="collab-label" id="collab-heading">Research &amp; Teaching Collaborations</p>
+      <p class="collab-subtitle">Click any project to see collaborators.</p>
 
-  <section>
-    <h2>Publications</h2>
-    <h3>Peer-reviewed journal articles</h3>
-    <ul>
-      <li>Tank, K. M., Ottenbreit-Leftwich, A., Moore, T. J., Yang, S., Wafula, Z., Kim, J., Fagundes, B., &amp; Chu, L. (2024). Investigating sequencing as a means to computational thinking in young children. <em>International Journal of Computer Science Education in Schools, 6</em>(3), 67-77. <a href="https://doi.org/10.21585/ijcses.v6i3.192">https://doi.org/10.21585/ijcses.v6i3.192</a></li>
-    </ul>
+      <div class="collab-legend" aria-label="Collaboration category legend">
+        <span class="legend-item"><span class="legend-swatch legend-blue" aria-hidden="true"></span>Computing &amp; STEM education</span>
+        <span class="legend-item"><span class="legend-swatch legend-amber" aria-hidden="true"></span>AI in education</span>
+        <span class="legend-item"><span class="legend-swatch legend-purple" aria-hidden="true"></span>Learning &amp; faculty development</span>
+        <span class="legend-item"><span class="legend-swatch legend-green" aria-hidden="true"></span>Teaching &amp; curriculum</span>
+      </div>
 
-    <h3>Preprints and submitted manuscripts</h3>
-    <ul>
-      <li>Dickey, E., Bejarano, A., Kuperus, R., &amp; Fagundes, B. (2025). Evaluating the AI-Lab intervention: Impact on student perception and use of generative AI in early undergraduate computer science courses. <em>arXiv</em>. <a href="https://doi.org/10.48550/arXiv.2505.00100">https://doi.org/10.48550/arXiv.2505.00100</a></li>
-    </ul>
+      <div class="network-wrap">
+        <svg class="collab-network" viewBox="0 0 760 470" role="img" aria-label="Network diagram connecting Barbara Fagundes to research and teaching projects">
+          <line class="network-line" x1="380" y1="172" x2="380" y2="37" />
+          <line class="network-line" x1="380" y1="172" x2="120" y2="100" />
+          <line class="network-line" x1="380" y1="172" x2="640" y2="100" />
+          <line class="network-line" x1="380" y1="172" x2="125" y2="229" />
+          <line class="network-line" x1="380" y1="172" x2="632" y2="229" />
+          <line class="network-line" x1="380" y1="172" x2="380" y2="319" />
+          <line class="network-line" x1="380" y1="172" x2="165" y2="319" />
+          <line class="network-line" x1="380" y1="172" x2="585" y2="319" />
+          <line class="network-line" x1="380" y1="172" x2="90" y2="415" />
+          <line class="network-line" x1="380" y1="172" x2="380" y2="415" />
+          <line class="network-line" x1="380" y1="172" x2="645" y2="418" />
 
-    <h3>Manuscripts in preparation</h3>
-    <ul>
-      <li>Fagundes, B., Harris-Thomas, B., Bonem, E., Guberman, D., &amp; Levesque-Bristol, C. (2026). Supporting student autonomy in higher education STEM classrooms: Faculty practices, barriers, and evolving perceptions. <span class="meta">Target journal: <em>International Journal of STEM Education</em>.</span></li>
-    </ul>
+          <g class="center-node" aria-hidden="true">
+            <rect x="310" y="148" width="140" height="48" rx="8" />
+            <text class="center-name" x="380" y="168" text-anchor="middle">Barbara Fagundes</text>
+            <text x="380" y="182" text-anchor="middle">Purdue University</text>
+          </g>
 
-    <h3>Peer-reviewed conference papers</h3>
-    <ul>
-      <li>Fagundes, B., &amp; Moore, T. J. (2025, June). Comparing computational thinking learning and engagement in first-grade boys and girls: A study of algorithm design and debugging (WIP). <em>ASEE Annual Conference &amp; Exposition</em>.</li>
-      <li>Fagundes, B., Guberman, D., Smart, K., &amp; Holder, K. (2025, June). Student pedagogy advocates: Enhancing teaching and learning through student-faculty partnerships (WIP). <em>ASEE Annual Conference &amp; Exposition</em>. <a href="https://doi.org/10.18260/1-2--55986">https://doi.org/10.18260/1-2--55986</a></li>
-      <li>Wafula, Z., Tank, K. M., Moore, T. J., Ottenbreit-Leftwich, A. T., Fagundes, B., &amp; Kim, J. (2024). Assessing computational thinking skills in early elementary students: A focus on sequencing tasks. <em>SITE International Conference</em> (pp. 400-405). <a href="https://www.learntechlib.org/primary/p/223964/">https://www.learntechlib.org/primary/p/223964/</a></li>
-      <li>Fagundes, B., Bhide, N., Moore, T. J., &amp; Tank, K. M. (2021, July). Computational thinking in first-grade students using a computational device (WIP). <em>ASEE Annual Conference &amp; Exposition</em>. <a href="https://doi.org/10.18260/1-2--36825">https://doi.org/10.18260/1-2--36825</a></li>
-      <li>Fagundes, B., Ehsan, H., Moore, T. J., Tank, K. M., &amp; Cardella, M. E. (2020, June). First-graders' computational thinking in informal learning settings (WIP). <em>ASEE Annual Conference &amp; Exposition</em>. <a href="https://doi.org/10.18260/1-2--35541">https://doi.org/10.18260/1-2--35541</a></li>
-      <li>Johnston, A. C., Lopez-Parra, R. D., Tank, K. M., Moore, T. J., &amp; Fagundes, B. (2019, June). Design decision processes of first-grade students during an engineering design-based STEM unit. <em>ASEE Annual Conference &amp; Exposition</em>. <a href="https://doi.org/10.18260/1-2--32599">https://doi.org/10.18260/1-2--32599</a></li>
-      <li>Yeter, I. H., Rynearson, A. M., Ehsan, H., Rehmat, A. P., Dasgupta, A., Fagundes, B., Menekse, M., &amp; Cardella, M. E. (2019, June). Design and implementation of data collection in a large-scale, multi-year pre-college engineering study. <em>ASEE Annual Conference &amp; Exposition</em>. <a href="https://doi.org/10.18260/1-2--32596">https://doi.org/10.18260/1-2--32596</a></li>
-    </ul>
+          <g class="project-node" data-project="rect" data-category="computing" role="button" tabindex="0" aria-label="NSF RECT Project">
+            <rect x="300" y="12" width="160" height="50" rx="8" />
+            <text class="node-title" x="380" y="31" text-anchor="middle">NSF RECT Project</text>
+            <text class="node-category" x="380" y="45" text-anchor="middle">Computing &amp; STEM education</text>
+          </g>
+          <g class="project-node" data-project="cistar" data-category="teaching" role="button" tabindex="0" aria-label="CISTAR NSF Center">
+            <rect x="30" y="75" width="180" height="50" rx="8" />
+            <text class="node-title" x="120" y="95" text-anchor="middle">CISTAR NSF Center</text>
+            <text class="node-category" x="120" y="109" text-anchor="middle">Teaching &amp; curriculum</text>
+          </g>
+          <g class="project-node" data-project="ai-lab" data-category="ai" role="button" tabindex="0" aria-label="AI-Lab Study">
+            <rect x="550" y="75" width="180" height="50" rx="8" />
+            <text class="node-title" x="640" y="95" text-anchor="middle">AI-Lab Study</text>
+            <text class="node-category" x="640" y="109" text-anchor="middle">AI in education</text>
+          </g>
+          <g class="project-node" data-project="autonomy" data-category="learning" role="button" tabindex="0" aria-label="Autonomy and SDT">
+            <rect x="30" y="200" width="190" height="58" rx="8" />
+            <text class="node-title" x="125" y="220" text-anchor="middle">Autonomy &amp; SDT</text>
+            <text class="node-category" x="125" y="234" text-anchor="middle">Learning &amp; faculty</text>
+            <text class="node-category" x="125" y="246" text-anchor="middle">development</text>
+          </g>
+          <g class="project-node" data-project="spa" data-category="learning" role="button" tabindex="0" aria-label="Student Pedagogy Advocates">
+            <rect x="535" y="200" width="195" height="58" rx="8" />
+            <text class="node-title" x="632" y="217" text-anchor="middle">Student Pedagogy</text>
+            <text class="node-title" x="632" y="230" text-anchor="middle">Advocates</text>
+            <text class="node-category" x="632" y="244" text-anchor="middle">Learning &amp; faculty development</text>
+          </g>
+          <g class="project-node" data-project="fye" data-category="teaching" role="button" tabindex="0" aria-label="First-Year Engineering">
+            <rect x="285" y="290" width="190" height="58" rx="8" />
+            <text class="node-title" x="380" y="310" text-anchor="middle">First-Year Engineering</text>
+            <text class="node-category" x="380" y="324" text-anchor="middle">Teaching &amp; curriculum</text>
+          </g>
+          <g class="project-node" data-project="online" data-category="teaching" role="button" tabindex="0" aria-label="Teaching Engineering Online">
+            <rect x="70" y="290" width="190" height="58" rx="8" />
+            <text class="node-title" x="165" y="310" text-anchor="middle">Teaching Eng. Online</text>
+            <text class="node-category" x="165" y="324" text-anchor="middle">Teaching &amp; curriculum</text>
+          </g>
+          <g class="project-node" data-project="graduate-ta" data-category="teaching" role="button" tabindex="0" aria-label="Graduate Course TA">
+            <rect x="490" y="290" width="190" height="58" rx="8" />
+            <text class="node-title" x="585" y="310" text-anchor="middle">Graduate Course TA</text>
+            <text class="node-category" x="585" y="324" text-anchor="middle">Teaching &amp; curriculum</text>
+          </g>
+          <g class="project-node" data-project="engrteams" data-category="computing" role="button" tabindex="0" aria-label="EngrTEAMS">
+            <rect x="10" y="390" width="160" height="50" rx="8" />
+            <text class="node-title" x="90" y="410" text-anchor="middle">EngrTEAMS</text>
+            <text class="node-category" x="90" y="424" text-anchor="middle">Computing &amp; STEM education</text>
+          </g>
+          <g class="project-node" data-project="picturestem" data-category="computing" role="button" tabindex="0" aria-label="PictureSTEM">
+            <rect x="300" y="390" width="160" height="50" rx="8" />
+            <text class="node-title" x="380" y="410" text-anchor="middle">PictureSTEM</text>
+            <text class="node-category" x="380" y="424" text-anchor="middle">Computing &amp; STEM education</text>
+          </g>
+          <g class="project-node" data-project="integrated-stem" data-category="computing" role="button" tabindex="0" aria-label="Integrated STEM and Computing Learning">
+            <rect x="535" y="390" width="215" height="58" rx="8" />
+            <text class="node-title" x="642" y="408" text-anchor="middle">Integrated STEM and</text>
+            <text class="node-title" x="642" y="421" text-anchor="middle">Computing Learning</text>
+            <text class="node-category" x="642" y="435" text-anchor="middle">Computing &amp; STEM education</text>
+          </g>
+        </svg>
+      </div>
 
-    <h3>Presentations, workshops, and posters</h3>
-    <ul>
-      <li>Moore, T., Tank, K., &amp; Fagundes, B. (2023). Task interviews as a research tool: Cases from K-2 computational thinking. Workshop presented at the Pre-College Engineering Education Division (PCEE) at the 2023 <em>ASEE Annual Conference &amp; Exposition</em>, Baltimore, MD.</li>
-      <li>Ottenbreit-Leftwich, A., Moore, T. J., Tank, K. M., Kim, J., Fagundes, B., Chu, L., &amp; Wafula, Z. (2023). Rethinking circle time: Development of K-2 CT literacy integrated curriculum [Poster presentation]. <em>SIGCSE 2023: 54th ACM Technical Symposium on Computer Science Education</em>, Toronto, Ontario, Canada (pp. 1394-1394). <a href="https://doi.org/10.1145/3545947.3576338">https://doi.org/10.1145/3545947.3576338</a></li>
-      <li>Fagundes, B., Bhide, N., Moore, T. J., Drummond Oaks, M., &amp; Godwin, A. (2022, June). Online professional development aid for teaching an engineering design-based curriculum in 8th grade (Resource Exchange). Work showcased at the Exhibit Hall in the 2022 <em>ASEE Annual Conference &amp; Exposition</em>, Minneapolis, MN.</li>
-      <li>Lopez-Parra, R. D., Fagundes, B., Wallace, D., Bhide, N., Moore, T. J., Drummond Oaks, M., &amp; Godwin, A. (2022, June). Engineering design-based curriculum for teaching 8th grade students renewable energy (Resource Exchange). Work showcased at the Exhibit Hall in the 2022 <em>ASEE Annual Conference &amp; Exposition</em>, Minneapolis, MN.</li>
-      <li>Fagundes, B., &amp; Bhide, N. (2021, July). Computational thinking in first-grade students using a computational device. Virtual poster presentation at the 2021 <em>ASEE Annual Conference &amp; Exposition</em>. Online.</li>
-      <li>Fagundes, B., &amp; Cardella, M. (2018, December). Exploring engineering behaviors of young children interacting with a parent. ENE Explorer Poster Session presentation at the <em>Engineering Education Researcher Seminar</em>, Purdue University, West Lafayette, IN.</li>
-    </ul>
-  </section>
+      <div class="collab-detail" id="collab-detail" aria-live="polite">
+        <p class="collab-placeholder">Click a project node above to see collaborators and details.</p>
+      </div>
+    </section>
 
-  <section>
-    <h2>Methods and tools</h2>
-    <p>Bárbara's research draws on qualitative and mixed-methods approaches suited to studying learning in naturalistic and institutional settings. Her methodological toolkit includes classroom-based video data collection and analysis, semi-structured interviews and focus groups, thematic analysis, survey design and administration, and human subjects research protocols in K-12 and higher education contexts. She uses NVivo for qualitative data management, Qualtrics for survey design and data collection, and has experience coordinating large-scale data collection across multiple school and institutional sites.</p>
-  </section>
+    <section>
+      <h2>Publications</h2>
+      <h3>Peer-reviewed journal articles</h3>
+      <ul>
+        <li>Tank, K. M., Ottenbreit-Leftwich, A., Moore, T. J., Yang, S., Wafula, Z., Kim, J., Fagundes, B., &amp; Chu, L. (2024). Investigating sequencing as a means to computational thinking in young children. <em>International Journal of Computer Science Education in Schools, 6</em>(3), 67-77. <a href="https://doi.org/10.21585/ijcses.v6i3.192">https://doi.org/10.21585/ijcses.v6i3.192</a></li>
+      </ul>
 
-  <section>
-    <h2>CV and contact</h2>
-    <p class="contact-links">
-      <a href="files/bfagundes_CV.pdf">Download Full CV (PDF)</a>
-      <a href="https://scholar.google.com/citations?user=XupPbTIAAAAJ&hl=en&oi=ao">Google Scholar</a>
-      <a href="https://www.researchgate.net/profile/Barbara-Fagundes-2">ResearchGate</a>
-      <a href="mailto:iambarbaraf@gmail.com">Email</a>
-    </p>
-  </section>
+      <h3>Preprints and submitted manuscripts</h3>
+      <ul>
+        <li>Dickey, E., Bejarano, A., Kuperus, R., &amp; Fagundes, B. (2025). Evaluating the AI-Lab intervention: Impact on student perception and use of generative AI in early undergraduate computer science courses. <em>arXiv</em>. <a href="https://doi.org/10.48550/arXiv.2505.00100">https://doi.org/10.48550/arXiv.2505.00100</a></li>
+      </ul>
+
+      <h3>Manuscripts in preparation</h3>
+      <ul>
+        <li>Fagundes, B., Harris-Thomas, B., Bonem, E., Guberman, D., &amp; Levesque-Bristol, C. (2026). Supporting student autonomy in higher education STEM classrooms: Faculty practices, barriers, and evolving perceptions. <span class="meta">Target journal: <em>International Journal of STEM Education</em>.</span></li>
+      </ul>
+
+      <h3>Peer-reviewed conference papers</h3>
+      <ul>
+        <li>Fagundes, B., &amp; Moore, T. J. (2025, June). Comparing computational thinking learning and engagement in first-grade boys and girls: A study of algorithm design and debugging (WIP). <em>ASEE Annual Conference &amp; Exposition</em>.</li>
+        <li>Fagundes, B., Guberman, D., Smart, K., &amp; Holder, K. (2025, June). Student pedagogy advocates: Enhancing teaching and learning through student-faculty partnerships (WIP). <em>ASEE Annual Conference &amp; Exposition</em>. <a href="https://doi.org/10.18260/1-2--55986">https://doi.org/10.18260/1-2--55986</a></li>
+        <li>Wafula, Z., Tank, K. M., Moore, T. J., Ottenbreit-Leftwich, A. T., Fagundes, B., &amp; Kim, J. (2024). Assessing computational thinking skills in early elementary students: A focus on sequencing tasks. <em>SITE International Conference</em> (pp. 400-405). <a href="https://www.learntechlib.org/primary/p/223964/">https://www.learntechlib.org/primary/p/223964/</a></li>
+        <li>Fagundes, B., Bhide, N., Moore, T. J., &amp; Tank, K. M. (2021, July). Computational thinking in first-grade students using a computational device (WIP). <em>ASEE Annual Conference &amp; Exposition</em>. <a href="https://doi.org/10.18260/1-2--36825">https://doi.org/10.18260/1-2--36825</a></li>
+        <li>Fagundes, B., Ehsan, H., Moore, T. J., Tank, K. M., &amp; Cardella, M. E. (2020, June). First-graders' computational thinking in informal learning settings (WIP). <em>ASEE Annual Conference &amp; Exposition</em>. <a href="https://doi.org/10.18260/1-2--35541">https://doi.org/10.18260/1-2--35541</a></li>
+        <li>Johnston, A. C., Lopez-Parra, R. D., Tank, K. M., Moore, T. J., &amp; Fagundes, B. (2019, June). Design decision processes of first-grade students during an engineering design-based STEM unit. <em>ASEE Annual Conference &amp; Exposition</em>. <a href="https://doi.org/10.18260/1-2--32599">https://doi.org/10.18260/1-2--32599</a></li>
+        <li>Yeter, I. H., Rynearson, A. M., Ehsan, H., Rehmat, A. P., Dasgupta, A., Fagundes, B., Menekse, M., &amp; Cardella, M. E. (2019, June). Design and implementation of data collection in a large-scale, multi-year pre-college engineering study. <em>ASEE Annual Conference &amp; Exposition</em>. <a href="https://doi.org/10.18260/1-2--32596">https://doi.org/10.18260/1-2--32596</a></li>
+      </ul>
+
+      <h3>Presentations, workshops, and posters</h3>
+      <ul>
+        <li>Moore, T., Tank, K., &amp; Fagundes, B. (2023). Task interviews as a research tool: Cases from K-2 computational thinking. Workshop presented at the Pre-College Engineering Education Division (PCEE) at the 2023 <em>ASEE Annual Conference &amp; Exposition</em>, Baltimore, MD.</li>
+        <li>Ottenbreit-Leftwich, A., Moore, T. J., Tank, K. M., Kim, J., Fagundes, B., Chu, L., &amp; Wafula, Z. (2023). Rethinking circle time: Development of K-2 CT literacy integrated curriculum [Poster presentation]. <em>SIGCSE 2023: 54th ACM Technical Symposium on Computer Science Education</em>, Toronto, Ontario, Canada (pp. 1394-1394). <a href="https://doi.org/10.1145/3545947.3576338">https://doi.org/10.1145/3545947.3576338</a></li>
+        <li>Fagundes, B., Bhide, N., Moore, T. J., Drummond Oaks, M., &amp; Godwin, A. (2022, June). Online professional development aid for teaching an engineering design-based curriculum in 8th grade (Resource Exchange). Work showcased at the Exhibit Hall in the 2022 <em>ASEE Annual Conference &amp; Exposition</em>, Minneapolis, MN.</li>
+        <li>Lopez-Parra, R. D., Fagundes, B., Wallace, D., Bhide, N., Moore, T. J., Drummond Oaks, M., &amp; Godwin, A. (2022, June). Engineering design-based curriculum for teaching 8th grade students renewable energy (Resource Exchange). Work showcased at the Exhibit Hall in the 2022 <em>ASEE Annual Conference &amp; Exposition</em>, Minneapolis, MN.</li>
+        <li>Fagundes, B., &amp; Bhide, N. (2021, July). Computational thinking in first-grade students using a computational device. Virtual poster presentation at the 2021 <em>ASEE Annual Conference &amp; Exposition</em>. Online.</li>
+        <li>Fagundes, B., &amp; Cardella, M. (2018, December). Exploring engineering behaviors of young children interacting with a parent. ENE Explorer Poster Session presentation at the <em>Engineering Education Researcher Seminar</em>, Purdue University, West Lafayette, IN.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Methods and tools</h2>
+      <p>Bárbara's research draws on qualitative and mixed-methods approaches suited to studying learning in naturalistic and institutional settings. Her methodological toolkit includes classroom-based video data collection and analysis, semi-structured interviews and focus groups, thematic analysis, survey design and administration, and human subjects research protocols in K-12 and higher education contexts. She uses NVivo for qualitative data management, Qualtrics for survey design and data collection, and has experience coordinating large-scale data collection across multiple school and institutional sites.</p>
+    </section>
+
+    <section>
+      <h2>CV and contact</h2>
+      <p class="contact-links">
+        <a href="files/bfagundes_CV.pdf">Download Full CV (PDF)</a>
+        <a href="https://scholar.google.com/citations?user=XupPbTIAAAAJ&hl=en&oi=ao">Google Scholar</a>
+        <a href="https://www.researchgate.net/profile/Barbara-Fagundes-2">ResearchGate</a>
+        <a href="mailto:iambarbaraf@gmail.com">Email</a>
+      </p>
+    </section>
   </main>
+
   <script>
     (function() {
       var toggle = document.getElementById('theme-toggle');
       function applyTheme(dark) {
-        if (dark) {
-          document.documentElement.setAttribute('data-theme', 'dark');
-        } else {
-          document.documentElement.removeAttribute('data-theme');
-        }
+        if (dark) { document.documentElement.setAttribute('data-theme', 'dark'); }
+        else { document.documentElement.removeAttribute('data-theme'); }
         toggle.textContent = dark ? '🌙' : '☀️';
       }
       var saved = localStorage.getItem('theme');
@@ -486,41 +511,30 @@
     function renderProject(projectId) {
       const project = collaborationProjects[projectId];
       if (!project || !detailCard) return;
-
       detailCard.textContent = "";
-
       const title = document.createElement("h3");
       title.className = "detail-title";
       title.textContent = project.title;
-
       const type = document.createElement("p");
       type.className = "detail-type";
       type.textContent = project.type;
-
       const description = document.createElement("p");
       description.textContent = project.description;
-
       const grid = document.createElement("div");
       grid.className = "collab-grid";
-
       project.collaborators.forEach(([name, role]) => {
         const card = document.createElement("div");
         card.className = "collaborator-card";
-
         const collaboratorName = document.createElement("span");
         collaboratorName.className = "collaborator-name";
         collaboratorName.textContent = name;
-
         const collaboratorRole = document.createElement("span");
         collaboratorRole.className = "collaborator-role";
         collaboratorRole.textContent = role;
-
         card.append(collaboratorName, collaboratorRole);
         grid.append(card);
       });
-
       const elements = [title, type];
-
       if (project.tags && project.tags.length) {
         const tagsDiv = document.createElement("div");
         tagsDiv.className = "detail-tags";
@@ -532,7 +546,6 @@
         });
         elements.push(tagsDiv);
       }
-
       if (project.funding) {
         const fundingP = document.createElement("p");
         fundingP.style.cssText = "font-size:0.86rem; color: var(--muted); margin-bottom: 0.75rem;";
@@ -541,9 +554,7 @@
         fundingP.append(boldF, document.createTextNode(project.funding));
         elements.push(fundingP);
       }
-
       elements.push(description);
-
       if (project.partners) {
         const partnersP = document.createElement("p");
         const bold = document.createElement("strong");
@@ -551,7 +562,6 @@
         partnersP.append(bold, document.createTextNode(project.partners));
         elements.push(partnersP);
       }
-
       elements.push(grid);
       detailCard.append(...elements);
     }
@@ -562,7 +572,6 @@
         node.classList.add("is-active");
         renderProject(node.dataset.project);
       };
-
       node.addEventListener("click", activateNode);
       node.addEventListener("keydown", (event) => {
         if (event.key === "Enter" || event.key === " ") {

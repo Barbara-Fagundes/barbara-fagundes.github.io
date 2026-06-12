@@ -3,66 +3,133 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Publications | Barbara Fagundes</title>
+  <title>Publications | Bárbara Fagundes</title>
   <script>(function(){var s=localStorage.getItem('theme'),p=window.matchMedia('(prefers-color-scheme: dark)').matches;if(s==='dark'||(!s&&p))document.documentElement.setAttribute('data-theme','dark')})();</script>
   <style>
-    :root { --bg: #fafafa; --text: #171717; --muted: #666; --line: #e6e6e6; --link: #235789; }
-    body { max-width: 760px; margin: 0 auto; padding: 4rem 1.25rem; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.65; background: var(--bg); color: var(--text); }
+    :root {
+      --bg: #f9f7f4; --surface: #ffffff; --text: #1a1a18; --muted: #6b6b62;
+      --line: #e4e0d8; --link: #235789; --accent: #b05e3c; --accent-soft: #f5ede8;
+      --max: 860px; --serif: Georgia, "Times New Roman", Times, serif;
+      --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    html[data-theme="dark"] {
+      --bg: #111110; --surface: #1c1c1a; --text: #e8e6e0; --muted: #9a9a8e;
+      --line: #2e2e2a; --link: #79b5f5; --accent: #d98060; --accent-soft: #261a14;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: var(--sans); color: var(--text); background: var(--bg); line-height: 1.7; }
     a { color: var(--link); text-decoration: none; } a:hover { text-decoration: underline; }
-    nav { display: flex; flex-wrap: wrap; gap: .85rem; margin: 1rem 0 3rem; }
-    h1 { font-size: clamp(2rem, 6vw, 3.5rem); line-height: 1; letter-spacing: -.05em; }
-    h1, h2, h3, h4, h5, h6 { font-family: Georgia, "Times New Roman", Times, serif; }
-    section { border-top: 1px solid var(--line); padding: 2rem 0; }
-    li { margin-bottom: .9rem; }
-    .meta { color: var(--muted); }
-    .theme-toggle { position: fixed; top: 1rem; right: 1rem; z-index: 100; width: 2.4rem; height: 2.4rem; border: 1px solid var(--line); border-radius: 50%; background: var(--bg); font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 6px rgba(0,0,0,0.12); padding: 0; }
-    .theme-toggle:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.18); }
-    html[data-theme="dark"] { --bg: #111111; --text: #e4e4e4; --muted: #9a9a9a; --line: #2d2d2d; --link: #79b5f5; }
+    h1, h2, h3 { font-family: var(--serif); line-height: 1.15; }
+    p { margin: 0 0 0.9rem; }
+    ul { margin: 0 0 1rem; padding-left: 1.2rem; }
+    li { margin-bottom: 0.85rem; }
+    .page { max-width: var(--max); margin: 0 auto; padding: 0 1.25rem; }
+
+    .topbar { border-bottom: 1px solid var(--line); background: var(--bg); position: sticky; top: 0; z-index: 50; }
+    .topbar-inner { max-width: var(--max); margin: 0 auto; padding: 0 1.25rem; display: flex; align-items: center; justify-content: space-between; height: 3.2rem; gap: 1rem; }
+    .topbar-name { font-family: var(--serif); font-size: 0.95rem; white-space: nowrap; }
+    .topbar-nav { display: flex; flex-wrap: wrap; gap: 0.2rem; align-items: center; }
+    .topbar-nav a { padding: 0.22rem 0.55rem; border: 1px solid transparent; border-radius: 999px; font-size: 0.85rem; color: var(--muted); }
+    .topbar-nav a:hover { color: var(--text); text-decoration: none; border-color: var(--line); }
+    .topbar-nav a[aria-current="page"] { color: var(--link); background: #eef5fb; border-color: #cfe0ee; }
+    html[data-theme="dark"] .topbar-nav a[aria-current="page"] { background: #1a2a3a; border-color: #2d4a6a; }
+
+    .theme-toggle { position: fixed; top: 0.75rem; right: 1rem; z-index: 100; width: 2.3rem; height: 2.3rem; border: 1px solid var(--line); border-radius: 50%; background: var(--bg); font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 6px rgba(0,0,0,0.1); padding: 0; }
+    .theme-toggle:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.16); }
+
+    .profile-strip { display: flex; align-items: center; gap: 1.5rem; padding: 2rem 0 2.5rem; }
+    .profile-picture { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line); background: var(--surface); flex-shrink: 0; }
+    html[data-theme="dark"] .profile-picture { background: #2a2a26; }
+    .profile-info h1 { margin: 0 0 0.25rem; font-size: clamp(1.2rem, 3.5vw, 1.9rem); letter-spacing: -0.03em; }
+    .profile-info .subtitle { margin: 0 0 0.6rem; color: var(--muted); font-size: 0.9rem; line-height: 1.45; }
+    .profile-links { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .profile-links a { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border: 1px solid var(--line); border-radius: 50%; background: var(--surface); }
+    .profile-links a:hover { border-color: var(--accent); text-decoration: none; }
+    .profile-links a img { width: 0.95em; height: 0.95em; vertical-align: middle; }
+    .profile-links .cv-button { width: 2.5rem; border-radius: 999px; background: var(--link); border-color: var(--link); color: white; font-size: 0.75rem; font-weight: 700; }
+    html[data-theme="dark"] .profile-links a { background: #1e1e1c; border-color: #3a3a3a; }
+    html[data-theme="dark"] .profile-links a img { filter: brightness(0) invert(1); }
+    html[data-theme="dark"] .profile-links .cv-button { background: var(--link); border-color: var(--link); }
+
+    section { padding: 2.5rem 0; border-top: 1px solid var(--line); }
+    h2 { margin: 0 0 0.75rem; font-size: 1.25rem; letter-spacing: -0.02em; }
+    .meta { color: var(--muted); font-style: italic; }
+
+    @media (max-width: 620px) {
+      .profile-strip { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 1.5rem 0 2rem; }
+      .topbar-name { display: none; }
+    }
   </style>
 </head>
 <body>
   <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">☀️</button>
-  <h1>Publications</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="industry.html">Industry</a>
-    <a href="publications.html">Publications</a>
-    <a href="portfolio.html">Instructional Design Portfolio</a>
+
+  <nav class="topbar" aria-label="Site navigation">
+    <div class="topbar-inner">
+      <span class="topbar-name">Bárbara Fagundes, PhD</span>
+      <div class="topbar-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="academia.html">Academia</a>
+        <a href="industry.html">Industry</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="beyond-cv.html">Beyond the CV</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
   </nav>
 
-  <section>
-    <h2>Peer-reviewed journal articles</h2>
-    <ul>
-      <li>Tank, K. M., Ottenbreit-Leftwich, A., Moore, T. J., Yang, S., Wafula, Z., Kim, J., Fagundes, B., &amp; Chu, L. (2024). Investigating sequencing as a means to computational thinking in young children. <em>International Journal of Computer Science Education in Schools, 6</em>(3), 67–77. <a href="https://doi.org/10.21585/ijcses.v6i3.192">https://doi.org/10.21585/ijcses.v6i3.192</a></li>
-    </ul>
-  </section>
+  <main class="page">
+    <div class="profile-strip">
+      <img class="profile-picture" src="assets/headshot.png" alt="Portrait of Bárbara Fagundes" />
+      <div class="profile-info">
+        <h1>Barbara Fagundes, PhD</h1>
+        <p class="subtitle">Postdoctoral Researcher | Responsible AI adoption<br>Computing Education | Faculty Development</p>
+        <nav aria-label="Profile links" class="profile-links">
+          <a class="cv-button" href="files/bfagundes_CV.pdf" aria-label="CV" title="CV">CV</a>
+          <a href="mailto:iambarbaraf@gmail.com" aria-label="Email" title="Email"><img src="assets/icons8-email-50.png" alt="Email" /></a>
+          <a href="https://scholar.google.com/citations?user=XupPbTIAAAAJ&hl=en&oi=ao" aria-label="Google Scholar" title="Google Scholar"><img src="assets/Google_Scholar_logo.svg" alt="Google Scholar" /></a>
+          <a href="https://www.researchgate.net/profile/Barbara-Fagundes-2" aria-label="ResearchGate" title="ResearchGate"><img src="assets/researchgate-logo.svg" alt="ResearchGate" /></a>
+          <a href="https://www.linkedin.com/in/iambarbaraf" aria-label="LinkedIn" title="LinkedIn"><img src="assets/icons8-linkedin-50.png" alt="LinkedIn" /></a>
+        </nav>
+      </div>
+    </div>
 
-  <section>
-    <h2>Peer-reviewed conference proceedings and publications</h2>
-    <ul>
-      <li>Fagundes, B., &amp; Moore, T. J. (2025, June). Comparing computational thinking learning and engagement in first-grade boys and girls: A study of algorithm design and debugging (WIP). In <em>Proceedings of the ASEE Annual Conference &amp; Exposition</em>. American Society for Engineering Education.</li>
-      <li>Fagundes, B., Guberman, D., Smart, K., &amp; Holder, K. (2025, June). Student pedagogy advocates: Enhancing teaching and learning through student-faculty partnerships (WIP). In <em>Proceedings of the ASEE Annual Conference &amp; Exposition</em>. American Society for Engineering Education. <a href="https://doi.org/10.18260/1-2--55986">https://doi.org/10.18260/1-2--55986</a></li>
-      <li>Wafula, Z., Tank, K. M., Moore, T. J., Ottenbreit-Leftwich, A. T., Fagundes, B., &amp; Kim, J. (2024). Assessing computational thinking skills in early elementary students: A focus on sequencing tasks. In J. Cohen &amp; G. Solano (Eds.), <em>Proceedings of Society for Information Technology &amp; Teacher Education International Conference</em> (pp. 400–405). Association for the Advancement of Computing in Education. <a href="https://www.learntechlib.org/primary/p/223964/">https://www.learntechlib.org/primary/p/223964/</a></li>
-      <li>Fagundes, B., Bhide, N., Moore, T. J., &amp; Tank, K. M. (2021, July). Computational thinking in first-grade students using a computational device (WIP). In <em>Proceedings of the ASEE Annual Conference &amp; Exposition</em>. American Society for Engineering Education. <a href="https://doi.org/10.18260/1-2--36825">https://doi.org/10.18260/1-2--36825</a></li>
-      <li>Fagundes, B., Ehsan, H., Moore, T. J., Tank, K. M., &amp; Cardella, M. E. (2020, June). First-graders’ computational thinking in informal learning settings (WIP). In <em>Proceedings of the ASEE Annual Conference &amp; Exposition</em>. American Society for Engineering Education. <a href="https://doi.org/10.18260/1-2--35541">https://doi.org/10.18260/1-2--35541</a></li>
-      <li>Johnston, A. C., Lopez-Parra, R. D., Tank, K. M., Moore, T. J., &amp; Fagundes, B. (2019, June). Design decision processes of first-grade students during an engineering design-based STEM unit. In <em>Proceedings of the ASEE Annual Conference &amp; Exposition</em>. American Society for Engineering Education. <a href="https://doi.org/10.18260/1-2--32599">https://doi.org/10.18260/1-2--32599</a></li>
-      <li>Yeter, I. H., Rynearson, A. M., Ehsan, H., Rehmat, A. P., Dasgupta, A., Fagundes, B., Menekse, M., &amp; Cardella, M. E. (2019, June). Design and implementation of data collection in a large-scale, multi-year pre-college engineering study: A retrospective. In <em>Proceedings of the ASEE Annual Conference &amp; Exposition</em>. American Society for Engineering Education. <a href="https://doi.org/10.18260/1-2--32596">https://doi.org/10.18260/1-2--32596</a></li>
-    </ul>
-  </section>
+    <section>
+      <h2>Peer-reviewed journal articles</h2>
+      <ul>
+        <li>Tank, K. M., Ottenbreit-Leftwich, A., Moore, T. J., Yang, S., Wafula, Z., Kim, J., Fagundes, B., &amp; Chu, L. (2024). Investigating sequencing as a means to computational thinking in young children. <em>International Journal of Computer Science Education in Schools, 6</em>(3), 67–77. <a href="https://doi.org/10.21585/ijcses.v6i3.192">https://doi.org/10.21585/ijcses.v6i3.192</a></li>
+      </ul>
+    </section>
 
-  <section>
-    <h2>Preprints and manuscripts submitted</h2>
-    <ul>
-      <li>Dickey, E., Bejarano, A., Kuperus, R., &amp; Fagundes, B. (2025). Evaluating the AI-Lab intervention: Impact on student perception and use of generative AI in early undergraduate computer science courses. <em>arXiv</em>. <a href="https://doi.org/10.48550/arXiv.2505.00100">https://doi.org/10.48550/arXiv.2505.00100</a></li>
-    </ul>
-  </section>
+    <section>
+      <h2>Peer-reviewed conference proceedings and publications</h2>
+      <ul>
+        <li>Fagundes, B., &amp; Moore, T. J. (2025, June). Comparing computational thinking learning and engagement in first-grade boys and girls: A study of algorithm design and debugging (WIP). In <em>Proceedings of the ASEE Annual Conference &amp; Exposition</em>. American Society for Engineering Education.</li>
+        <li>Fagundes, B., Guberman, D., Smart, K., &amp; Holder, K. (2025, June). Student pedagogy advocates: Enhancing teaching and learning through student-faculty partnerships (WIP). In <em>Proceedings of the ASEE Annual Conference &amp; Exposition</em>. American Society for Engineering Education. <a href="https://doi.org/10.18260/1-2--55986">https://doi.org/10.18260/1-2--55986</a></li>
+        <li>Wafula, Z., Tank, K. M., Moore, T. J., Ottenbreit-Leftwich, A. T., Fagundes, B., &amp; Kim, J. (2024). Assessing computational thinking skills in early elementary students: A focus on sequencing tasks. In J. Cohen &amp; G. Solano (Eds.), <em>Proceedings of Society for Information Technology &amp; Teacher Education International Conference</em> (pp. 400–405). Association for the Advancement of Computing in Education. <a href="https://www.learntechlib.org/primary/p/223964/">https://www.learntechlib.org/primary/p/223964/</a></li>
+        <li>Fagundes, B., Bhide, N., Moore, T. J., &amp; Tank, K. M. (2021, July). Computational thinking in first-grade students using a computational device (WIP). In <em>Proceedings of the ASEE Annual Conference &amp; Exposition</em>. American Society for Engineering Education. <a href="https://doi.org/10.18260/1-2--36825">https://doi.org/10.18260/1-2--36825</a></li>
+        <li>Fagundes, B., Ehsan, H., Moore, T. J., Tank, K. M., &amp; Cardella, M. E. (2020, June). First-graders' computational thinking in informal learning settings (WIP). In <em>Proceedings of the ASEE Annual Conference &amp; Exposition</em>. American Society for Engineering Education. <a href="https://doi.org/10.18260/1-2--35541">https://doi.org/10.18260/1-2--35541</a></li>
+        <li>Johnston, A. C., Lopez-Parra, R. D., Tank, K. M., Moore, T. J., &amp; Fagundes, B. (2019, June). Design decision processes of first-grade students during an engineering design-based STEM unit. In <em>Proceedings of the ASEE Annual Conference &amp; Exposition</em>. American Society for Engineering Education. <a href="https://doi.org/10.18260/1-2--32599">https://doi.org/10.18260/1-2--32599</a></li>
+        <li>Yeter, I. H., Rynearson, A. M., Ehsan, H., Rehmat, A. P., Dasgupta, A., Fagundes, B., Menekse, M., &amp; Cardella, M. E. (2019, June). Design and implementation of data collection in a large-scale, multi-year pre-college engineering study: A retrospective. In <em>Proceedings of the ASEE Annual Conference &amp; Exposition</em>. American Society for Engineering Education. <a href="https://doi.org/10.18260/1-2--32596">https://doi.org/10.18260/1-2--32596</a></li>
+      </ul>
+    </section>
 
-  <section>
-    <h2>Manuscripts in preparation</h2>
-    <ul>
-      <li>Fagundes, B., Harris-Thomas, B., Bonem, E., Guberman, D., &amp; Levesque-Bristol, C. (2026). Supporting student autonomy in higher education STEM classrooms: Faculty practices, barriers, and evolving perceptions. <span class="meta">Manuscript in preparation. Target journal: <em>International Journal of STEM Education</em>.</span></li>
-    </ul>
-  </section>
+    <section>
+      <h2>Preprints and manuscripts submitted</h2>
+      <ul>
+        <li>Dickey, E., Bejarano, A., Kuperus, R., &amp; Fagundes, B. (2025). Evaluating the AI-Lab intervention: Impact on student perception and use of generative AI in early undergraduate computer science courses. <em>arXiv</em>. <a href="https://doi.org/10.48550/arXiv.2505.00100">https://doi.org/10.48550/arXiv.2505.00100</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Manuscripts in preparation</h2>
+      <ul>
+        <li>Fagundes, B., Harris-Thomas, B., Bonem, E., Guberman, D., &amp; Levesque-Bristol, C. (2026). Supporting student autonomy in higher education STEM classrooms: Faculty practices, barriers, and evolving perceptions. <span class="meta">Manuscript in preparation. Target journal: <em>International Journal of STEM Education</em>.</span></li>
+      </ul>
+    </section>
+  </main>
+
   <script>
     (function() {
       var toggle = document.getElementById('theme-toggle');
