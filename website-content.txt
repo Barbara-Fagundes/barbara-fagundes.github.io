@@ -23,7 +23,7 @@ Highlights:
 - Faculty development and educator support
 
 Overview:
-One website, multiple job-search directions, one coherent throughline
+One website, multiple professional audiences, one coherent throughline
 
 Overview text:
 My niche sits at the intersection of engineering education, AI in learning, instructional design, and research-to-practice translation. Across all of those areas, I care about helping people build clarity, confidence, and good judgment when using complex tools.
@@ -53,21 +53,21 @@ Choose the path that matches the audience
 
 Academic card:
 Teaching, mentorship, and engineering education
-For faculty roles, postdoctoral work, research statements, and academic collaborations.
+For academic collaborators, research statements, teaching, and mentorship.
 - Engineering education and student learning
 - Generative AI in computing education
 - K-12 to higher education research trajectory
 
 Learning and Enablement card:
 Curriculum, training, adoption, and stakeholder support
-For learning program, enablement, curriculum, and instructional design roles in organizations.
+For educational partnerships involving learning programs, enablement, curriculum, and instructional design.
 - End-to-end learning design
 - Training programs and digital assets
 - Adoption support and evaluation
 
 AI Learning Research card:
 Reasoning, behavior, and cognitive outcomes with AI
-For research scientist and learning science roles focused on human-AI interaction and learning processes.
+For research collaborations focused on human-AI interaction and learning processes.
 - Qualitative and mixed-methods research
 - Student reasoning and help-seeking
 - AI literacy across educational settings
@@ -99,7 +99,7 @@ Explore materials and profiles
 - Selected work and case studies
 
 Contact:
-- bfagundes@purdue.edu
+- iambarbaraf@gmail.com
 - LinkedIn
 - ResearchGate
 
@@ -125,8 +125,10 @@ Intro text:
 I am interested in how students learn in design-centered environments, how teams navigate ambiguity, how faculty and students co-improve teaching, and how technical tools can support learning without becoming barriers to participation.
 
 Current Role:
-Postdoctoral Researcher, Learning & Technology Adoption
-Purdue University
+August 2026 - Present
+Visiting Assistant Instructional Professor
+Department of Engineering Education
+University of Florida
 
 Teaching:
 Teaching philosophy
@@ -174,7 +176,7 @@ Resources:
 - View selected work
 
 Contact:
-- bfagundes@purdue.edu
+- iambarbaraf@gmail.com
 - LinkedIn
 - ResearchGate
 
@@ -231,10 +233,10 @@ Experience:
 Relevant experience
 
 Experience item:
-2024 - Present
-Learning & Technology Adoption
-Purdue University
-Design support for generative AI adoption, qualitative analysis of adoption barriers, and collaborative guidance for integrating new tools into teaching and learning workflows.
+September 2024 - June 2026
+Postdoctoral Researcher, Learning & Technology Adoption
+Center for Instructional Excellence, Purdue University
+Designed support for generative AI adoption, conducted qualitative analysis of adoption barriers, and contributed collaborative guidance for integrating new tools into teaching and learning workflows.
 
 Experience item:
 2024
@@ -254,7 +256,7 @@ Resources:
 - AI learning research track
 
 Contact:
-- bfagundes@purdue.edu
+- iambarbaraf@gmail.com
 - LinkedIn
 - ResearchGate
 
@@ -271,7 +273,7 @@ Barbara Fagundes, Ph.D.
 Learning programs that make new tools practical, usable, and easy to adopt
 
 Section label:
-PayPal-Aligned Direction
+Learning & Enablement Direction
 
 Intro text:
 I design and deliver learning experiences that help people adopt tools, improve workflows, and build confidence in the systems they use every day. My work combines instructional design, stakeholder collaboration, user support, and continuous learning improvement.
@@ -286,9 +288,9 @@ Value:
 Turning stakeholder needs into structured learning programs
 
 Value text:
-My background is a strong fit for learning and curriculum roles that require stakeholder partnership, practical program design, and content that helps people perform more effectively. I enjoy understanding what learners need, choosing the right delivery format, and translating complex tools into training that feels clear and useful.
+My background supports learning and curriculum partnerships that require stakeholder collaboration, practical program design, and content that helps people perform more effectively. I enjoy understanding what learners need, choosing the right delivery format, and translating complex tools into training that feels clear and useful.
 
-I am especially drawn to roles where learning is tied to real business priorities, evolving workflows, and continuous improvement.
+This work is especially useful where learning is tied to real organizational priorities, evolving workflows, and continuous improvement.
 
 Strengths:
 What I bring
@@ -301,10 +303,10 @@ Experience:
 Relevant experience for learning and curriculum work
 
 Experience item:
-2024 - Present
+September 2024 - June 2026
 Postdoctoral Researcher, Learning & Technology Adoption
-Purdue University
-Analyze how learners interact with generative AI tools, identify adoption barriers and effective practices, and translate findings into actionable recommendations for teaching and learning support.
+Center for Instructional Excellence, Purdue University
+Analyzed how learners interact with generative AI tools, identified adoption barriers and effective practices, and translated findings into actionable recommendations for teaching and learning support.
 
 Experience item:
 2024
@@ -342,7 +344,7 @@ Resources:
 - Download CV
 
 Contact:
-- bfagundes@purdue.edu
+- iambarbaraf@gmail.com
 - linkedin.com/in/iambarbaraf
 
 
@@ -358,7 +360,7 @@ Barbara Fagundes, Ph.D.
 Studying how people think, learn, and make decisions when using AI systems
 
 Section label:
-OpenAI-Aligned Direction
+AI Learning Research Direction
 
 Intro text:
 I am a learning scientist studying how students reason, seek help, and rely on AI in real learning environments. My work aims to understand not just whether people use AI, but how AI changes learning processes, decision-making, and meaningful cognitive outcomes over time.
@@ -373,14 +375,14 @@ Research:
 From AI use to learning and cognitive outcomes
 
 Research text:
-My current research examines how undergraduate students use generative AI in engineering and computer science courses, with attention to reasoning, decision-making, help-seeking, and patterns of reliance on AI-generated outputs.
+My research has examined how undergraduate students use generative AI in engineering and computer science courses, with attention to reasoning, decision-making, help-seeking, and patterns of reliance on AI-generated outputs.
 
 I am especially interested in questions about autonomy, deeper learning, transfer, productive support, and the conditions under which AI helps or hinders the development of capability.
 
 That work also connects to a broader education question I care about: how universities can help K-12 systems build AI literacy in ways that are technically informed, educationally meaningful, and ethically responsible.
 
-Fit:
-What aligns strongly
+Focus:
+Core strengths
 - Learning science and behavioral research
 - AI in education and human-AI interaction
 - Real-world studies in complex learning settings
@@ -406,10 +408,10 @@ Experience:
 Relevant research and applied experience
 
 Experience item:
-2024 - Present
+September 2024 - June 2026
 Postdoctoral Researcher, AI Use, Learning Behaviors, and Student Reasoning
-Purdue University
-Lead qualitative research on undergraduate students' use of generative AI tools, capturing reasoning, decision-making, and behavioral patterns in real learning environments.
+Center for Instructional Excellence, Purdue University
+Led qualitative research on undergraduate students' use of generative AI tools, capturing reasoning, decision-making, and behavioral patterns in real learning environments.
 
 Experience item:
 2022 - 2023
@@ -442,7 +444,7 @@ Resources:
 - View related case studies
 
 Contact:
-- bfagundes@purdue.edu
+- iambarbaraf@gmail.com
 - linkedin.com/in/iambarbaraf
 - ResearchGate
 
